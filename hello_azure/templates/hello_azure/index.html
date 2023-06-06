@@ -37,25 +37,64 @@
 
     <form method="post" action="hello">
 
-      <div class="col-md-6 mx-auto text-center">
-        <label for="course" class="form-label fw-bold fs-5">Kurs</label>
+      <div class="mx-auto text-center">
+        <label for="name" class="form-label fw-bold fs-5">Name</label>
         <div class="d-grid gap-2 d-sm-flex justify-content-sm-center align-items-center my-1">
-          <input type="text" class="form-control" id="course" name="course" style="max-width: 256px;">
+          <input type="text" class="form-control" id="name" name="name" style="max-width: 256px;">
         </div>
 
-        <div class="col-md-6 mx-auto text-center">
-          <label for="course" class="form-label fw-bold fs-5">Kurs</label>
+        <div class="mx-auto text-center">
+          <label for="email" class="form-label fw-bold fs-5">E-Mail Adresse</label>
           <div class="d-grid gap-2 d-sm-flex justify-content-sm-center align-items-center my-1">
-            <input type="text" class="form-control" id="course" name="course" style="max-width: 256px;">
+            <input type="text" class="form-control" id="email" name="email" style="max-width: 256px;">
           </div>
 
-          <div class="col-md-6 mx-auto text-center">
+          <div class="mx-auto text-center">
             <label for="course" class="form-label fw-bold fs-5">Kurs</label>
             <div class="d-grid gap-2 d-sm-flex justify-content-sm-center align-items-center my-1">
               <input type="text" class="form-control" id="course" name="course" style="max-width: 256px;">
             </div>
 
+            <!-- Pickliste-->
+            <div class="mx-auto text-center">
+              <label for="documenttype" class=" fw-bold fs-5">Dokumentenart</label>
+              
+              <div class="d-grid gap-2 d-sm-flex justify-content-sm-center align-items-center my-1">
+                
+                  <select name="documenttype" id="documenttype" class="form-control" style="max-width: 256px;">
+                  <option hidden>Bitte wähle eine Dokumentenart</option>
+                  <option value="Fragen">Fragen</option>
+                  <option value="Literaturangaben">Literaturangaben</option>
+                  <option value="Lösungsheft">Lösungsheft</option>
+                  <option value="Skript">Skript</option>
+                  <option value="Tutorium">Tutorium</option>
+                  <option value="Vodcast">Vodcast</option>
+                  <option value="Sonstiges">Sonstiges</option>
+                </select>
+              </div>
 
+
+            
+
+              <div class="mx-auto text-center">
+                <label for="title" class="form-label fw-bold fs-5">Dokumententitel</label>
+                <div class="d-grid gap-2 d-sm-flex justify-content-sm-center align-items-center my-1">
+                  <input type="text" class="form-control" id="title" name="title" style="max-width: 256px;">
+                </div>
+
+                <!-- Pickliste-->
+                <div class="mx-auto text-center">
+                  <label for="tickettype" class="form-label fw-bold fs-5">Meldungsart</label>
+                  <div class="d-grid gap-2 d-sm-flex justify-content-sm-center align-items-center my-1">
+                    <input type="text" class="form-control" id="tickettype" name="tickettype" style="max-width: 256px;">
+                  </div>
+
+                  <!-- Bezeichnung angepasst-->
+                  <div class="mx-auto text-center">
+                    <label for="description" class="form-label fw-bold fs-5">Beschreibung</label>
+                    <div class="d-grid gap-2 d-sm-flex justify-content-sm-center align-items-center my-1">
+                      <input type="text" class="form-control" id="description" name="description" style="max-width: 256px;">
+                    </div>
 
 
             <div class="d-grid gap-2 d-sm-flex justify-content-sm-center my-2">
