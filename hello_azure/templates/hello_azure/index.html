@@ -58,11 +58,9 @@
             <!-- Pickliste-->
             <div class="mx-auto text-center">
               <label for="documenttype" class=" fw-bold fs-5">Dokumentenart</label>
-              
               <div class="d-grid gap-2 d-sm-flex justify-content-sm-center align-items-center my-1">
-                
-                  <select name="documenttype" id="documenttype" class="form-control" style="max-width: 256px;">
-                  <option hidden>Bitte wähle eine Dokumentenart</option>
+                <select name="documenttype" id="documenttype" class="form-control text-center" style="max-width: 256px;">
+                  <option hidden>Wähle eine Dokumentenart</option>
                   <option value="Fragen">Fragen</option>
                   <option value="Literaturangaben">Literaturangaben</option>
                   <option value="Lösungsheft">Lösungsheft</option>
@@ -72,9 +70,6 @@
                   <option value="Sonstiges">Sonstiges</option>
                 </select>
               </div>
-
-
-            
 
               <div class="mx-auto text-center">
                 <label for="title" class="form-label fw-bold fs-5">Dokumententitel</label>
@@ -86,21 +81,27 @@
                 <div class="mx-auto text-center">
                   <label for="tickettype" class="form-label fw-bold fs-5">Meldungsart</label>
                   <div class="d-grid gap-2 d-sm-flex justify-content-sm-center align-items-center my-1">
-                    <input type="text" class="form-control" id="tickettype" name="tickettype" style="max-width: 256px;">
+                    <select name="tickettype" id="tickettype" class="form-control text-center" style="max-width: 256px;">
+                      <option hidden>Wähle eine Meldungsart</option>
+                      <option value="Ergänzung">Ergänzung</option>
+                      <option value="Fehler">Fehler</option>
+                      <option value="Verbesserungsvorschlag">Verbesserungsvorschlag</option>
+                    </select>
                   </div>
 
                   <!-- Bezeichnung angepasst-->
                   <div class="mx-auto text-center">
                     <label for="description" class="form-label fw-bold fs-5">Beschreibung</label>
                     <div class="d-grid gap-2 d-sm-flex justify-content-sm-center align-items-center my-1">
-                      <input type="text" class="form-control" id="description" name="description" style="max-width: 256px;">
+                      <input type="text" class="form-control" id="description" name="description"
+                        style="max-width: 256px;">
                     </div>
 
 
-            <div class="d-grid gap-2 d-sm-flex justify-content-sm-center my-2">
-              <button type="submit" class="btn btn-primary btn-lg px-8 gap-3">Ticket senden</button>
-            </div>
-          </div>
+                    <div class="d-grid gap-2 d-sm-flex justify-content-sm-center my-2">
+                      <button type="submit" class="btn btn-primary btn-lg px-8 gap-3">Ticket senden</button>
+                    </div>
+                  </div>
     </form>
   </main>
 </body>
