@@ -1,10 +1,12 @@
 from django.shortcuts import render, redirect
 from django.http import HttpResponse
 from django.views.decorators.csrf import csrf_exempt
+import requests
 
 def index(request):
+    response = requests.get("http://localhost:7071/api/GetTickets")
     print('Request for index page received')
-    return render(request, 'tickets/index.html')
+    return render(request, 'tickets/index.html', {'response': response})
 
 @csrf_exempt
 def hello(request):
@@ -20,3 +22,4 @@ def hello(request):
             return render(request, 'tickets/hello.html', context)
     else:
         return redirect('index')
+    
