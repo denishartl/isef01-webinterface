@@ -1,22 +1,80 @@
-{% load static %}
-<!doctype html>
-<head>
-    <title>Hello Azure - Python Quickstart</title>
-    <link rel="stylesheet" href="{% static 'bootstrap/css/bootstrap.min.css' %}">
-    <link rel="icon"href="{% static 'favicon.ico' %}">
-</head>
-<html>
-   <body>
-     <main>
-        <div class="px-4 py-3 my-2 text-center">
-            <img class="d-block mx-auto mb-4" src="{% static 'images/azure-icon.svg' %}" alt="Azure Logo" width="192" height="192"/>
-            <!-- <img  src="/docs/5.1/assets/brand/bootstrap-logo.svg" alt="" width="72" height="57"> -->
-            <h1 class="display-6 fw-bold">Hello {{name}}</h1>
-            <p class="fs-5">
-                It is nice to meet you! Test
-            </p>
-            <a href="{% url 'index' %}" class="btn btn-primary btn-lg px-4 gap-3">Back home</a>
-          </div>
-     </main>      
-   </body>
-</html>
+<!DOCTYPE html>   
+<html>   
+<head>  
+<meta name="viewport" content="width=device-width, initial-scale=1">  
+<title> Melde dich im Ticketsystem an </title>  
+<style>   
+Body {  
+  font-family: Arial;  
+  background-color: white;  
+}  
+button {   
+       background-color: #000000;   
+       width: 100%;  
+        color: white;   
+        padding: 15px;   
+        margin: 10px 0px;   
+        border: none;   
+        cursor: pointer;   
+         }   
+ form {   
+        border: #000000;   
+    }   
+ input[type=text], input[type=password] {   
+        width: 100%;   
+        margin: 8px 0;  
+        padding: 12px 20px;   
+        display: inline-block;    	 
+        box-sizing: border-box;   
+    }  
+ button:hover {   
+        opacity: 0.7;   
+    }             
+     
+ .container {   
+        padding: 25px;   
+        background-color: white;  
+    } 
+
+ h1 {   
+        font-weight: lighter;   
+    } 
+
+ h2 {   
+        font-weight: lighter;  
+        font-size: 1.2em;  
+    } 
+
+ table {   
+       width: 100%; 
+       border: black;  
+    } 
+
+
+ td[type=right] {   
+        text-align: right;   
+    } 
+
+</style>   
+</head>    
+<body>    
+  <center> <img src="IU.jpg" width="120px"/> </center> 
+  <center> <h1> Willkommen </h1> </center> 
+  <center> <h2> Melde Dich bei der IU - Internationale Hochschule an um fortzufahren. </h2> </center>   
+    <form>  
+        <div class="container">   
+            <label>Benutzername </label>   
+            <input type="text" placeholder="Benutzername eingeben" name="username" required>  
+            <label>Passwort </label>   
+            <input type="password" placeholder="Passwort eingeben" name="password" required> 
+            <table> 
+              <tr>  
+                <td><input type="checkbox"> Benutzername merken </td>
+                <td type="right"><a href="#"> Passwort vergessen? </a> </td> 
+              </tr>
+            </table> 		   
+            <button type="submit">Login</button>   
+        </div>   
+    </form>     
+</body>     
+</html>  
