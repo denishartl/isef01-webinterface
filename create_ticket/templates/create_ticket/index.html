@@ -10,50 +10,49 @@
   <link rel="icon" href="{% static 'favicon_iu_logo.ico' %}">
 </head>
 
-<body>
 
-  <nav class="navbar">
-    <div>
-      <a href="/">
-        <img src="{% static 'images/iu_logo_white.png' %}" width="mx-auto" height="55px"
-          alt="Logo IU Internationale Hochschule" />
-      </a>
-    </div>
-    <ul class="nav-list" id="navList">
-      <li class="list-item"><a href="/">Meldungsübersicht</a></li>
-    </ul>
-    <div class="menu" id="toggleButton">
-      <div class="menu-line"></div>
-      <div class="menu-line"></div>
-      <div class="menu-line"></div>
-    </div>
-  </nav>
+<body>
+  <header>
+    <nav class="navbar">
+      <div>
+        <a href="/">
+          <img src="{% static 'images/iu_logo_white.png' %}" width="mx-auto" height="55px"
+            alt="Logo IU Internationale Hochschule" />
+        </a>
+      </div>
+      <ul class="nav-list" id="navList">
+        <li class="list-item"><a href="/">Meldungsübersicht</a></li>
+      </ul>
+    </nav>
+  </header>
+
 
 
 
   <!-- Formular -->
-  <div class="container">
-    <form class="form" method="post" action="hello">
-      <h1 class="middle">Neue Meldung erstellen</h1>
+  <form class="center-form" method="post" action="hello">
+    <h1 class="form-heading, middle">Neue Meldung erstellen</h1>
 
-      <div class="form-box">
-        <label for="name">Name</label>
-        <input type="text" name="name" id="name">
-      </div>
 
-      <div class="form-box">
-        <label for="email">E-Mail</label>
-        <input type="email" name="email" id="email" required>
-      </div>
+    <div class="form-box">
+      <label for="name">Name</label>
+      <input type="text" name="name" id="name" required>
+    </div>
 
-      <div class="form-box">
-        <label for="course">Kurs</label>
-        <input type="text" name="course" id="course">
-      </div>
+    <div class="form-box">
+      <label for="email">E-Mail</label>
+      <input type="email" name="email" id="email" required>
+    </div>
 
-      <div class="form-box">
-        <label for="documenttype">Dokumentenart</label>
-        <select name="documenttype" id="documenttype">
+    <div class="form-box">
+      <label for="course">Kurs</label>
+      <input type="text" name="course" id="course" required>
+    </div>
+
+    <div class="form-box">
+      <label for="documenttype">Dokumentenart</label>
+      <div class="select">
+        <select name="documenttype" id="documenttype" required>
           <option hidden> </option>
           <option value="Fragen">Fragen</option>
           <option value="Literaturangaben">Literaturangaben</option>
@@ -64,14 +63,16 @@
           <option value="Sonstiges">Sonstiges</option>
         </select>
       </div>
+    </div>
 
-      <div class="form-box">
-        <label for="title">Dokumententitel</label>
-        <input type="text" name="title" id="title">
-      </div>
+    <div class="form-box">
+      <label for="title">Dokumententitel</label>
+      <input type="text" name="title" id="title" required>
+    </div>
 
-      <div class="form-box">
-        <label for="tickettype">Meldungsart</label>
+    <div class="form-box">
+      <label for="tickettype">Meldungsart</label>
+      <div class="select">
         <select name="tickettype" id="tickettype" required>
           <option hidden> </option>
           <option value="Ergänzung">Ergänzung</option>
@@ -79,95 +80,24 @@
           <option value="Verbesserungsvorschlag">Verbesserungsvorschlag</option>
         </select>
       </div>
+    </div>
 
-      <div class="form-box">
-        <label for="description">Beschreibung</label>
-        <textarea name="description" id="description" required cols="50" rows="5"></textarea>
-      </div>
-
-
-      <div class="form-box">
-        <label for="attachment"> </label>
-        <input type="file" id="attachment" name="attachment" accept="image/png, image/jpeg, .pdf">
-      </div>
-
-      <div class="form-box">
-        <button type="submit">Absenden</button>
-      </div>
-  </div>
+    <div class="form-box">
+      <label for="description">Beschreibung</label>
+      <textarea name="description" id="description" required cols="50" rows="4"></textarea>
+    </div>
 
 
+    <div class="form-box">
+      <label for="attachment"> </label>
+      <input type="file" id="attachment" name="attachment" accept="image/png, image/jpeg, .pdf">
+    </div>
 
+    <div class="form-box middle">
+      <button type="submit">Absenden</button>
+      <a href="hello.html">Link-Text</a>
+    </div>
 
-  <!-- 
-      <div class="mx-auto text-center">
-        <label for="name" class="form-label fw-bold fs-5">Name</label>
-        
-        <div class="d-grid gap-2 d-sm-flex justify-content-sm-center align-items-center my-1">
-          <input type="text" class="form-control" id="name" name="name" style="max-width: 256px;">
-        </div>
-
-        <div class="mx-auto text-center">
-          <label for="email" class="form-label fw-bold fs-5">E-Mail Adresse</label>
-          <div class="d-grid gap-2 d-sm-flex justify-content-sm-center align-items-center my-1">
-            <input type="text" class="form-control" id="email" name="email" style="max-width: 256px;">
-          </div>
-
-          <div class="mx-auto text-center">
-            <label for="course" class="form-label fw-bold fs-5">Kurs</label>
-            <div class="d-grid gap-2 d-sm-flex justify-content-sm-center align-items-center my-1">
-              <input type="text" class="form-control" id="course" name="course" style="max-width: 256px;">
-            </div>
-
-           
-            <div class="mx-auto text-center">
-              <label for="documenttype" class=" fw-bold fs-5">Dokumentenart</label>
-              <div class="d-grid gap-2 d-sm-flex justify-content-sm-center align-items-center my-1">
-                <select name="documenttype" id="documenttype" class="form-control text-center"
-                  style="max-width: 256px;">
-                  <option hidden> </option>
-                  <option value="Fragen">Fragen</option>
-                  <option value="Literaturangaben">Literaturangaben</option>
-                  <option value="Lösungsheft">Lösungsheft</option>
-                  <option value="Skript">Skript</option>
-                  <option value="Tutorium">Tutorium</option>
-                  <option value="Vodcast">Vodcast</option>
-                  <option value="Sonstiges">Sonstiges</option>
-                </select>
-              </div>
-
-              <div class="mx-auto text-center">
-                <label for="title" class="form-label fw-bold fs-5">Dokumententitel</label>
-                <div class="d-grid gap-2 d-sm-flex justify-content-sm-center align-items-center my-1">
-                  <input type="text" class="form-control" id="title" name="title" style="max-width: 256px;">
-                </div>
-
-               
-                <div class="mx-auto text-center">
-                  <label for="tickettype" class="form-label fw-bold fs-5">Meldungsart</label>
-                  <div class="d-grid gap-2 d-sm-flex justify-content-sm-center align-items-center my-1">
-                    <select name="tickettype" id="tickettype" class="form-control text-center"
-                      style="max-width: 256px;">
-                      <option hidden> </option>
-                      <option value="Ergänzung">Ergänzung</option>
-                      <option value="Fehler">Fehler</option>
-                      <option value="Verbesserungsvorschlag">Verbesserungsvorschlag</option>
-                    </select>
-                  </div>
-
-                
-                  <div class="mx-auto text-center">
-                    <label for="description" class="form-label fw-bold fs-5">Beschreibung</label>
-                    <div class="d-grid gap-2 d-sm-flex justify-content-sm-center align-items-center my-1">
-                      <input type="text" class="form-control" id="description" name="description"
-                        style="max-width: 256px;">
-                    </div>
-
-
-                    <div class="d-grid gap-2 d-sm-flex justify-content-sm-center my-2">
-                      <button type="submit" class="btn btn-primary btn-lg px-8 gap-3">Ticket senden</button>
-                    </div>
-                  </div>-->
 
 
   </form>
