@@ -1,73 +1,30 @@
-{% load static %}
 <!DOCTYPE html>   
-<html>   
-<head>  
-<meta name="viewport" content="width=device-width, initial-scale=1">  
-<title> Melde dich im Ticketsystem an </title>  
-<style>   
+<html id="top">   
+  <head>  
+    <meta name="viewport" content="width=device-width, initial-scale=1">  
+    
+    <title> Melde dich im Ticketsystem an </title>  
+    
+    <link href="static\style.css" rel="stylesheet">
+  
+  </head>  
 
 
-@font-face{font-family:'Lato';font-style:normal;font-weight:300;src:local('Lato Light'), local('Lato-Light'), url(https://kms-a.akamaihd.net/dc-1/5.109.67.232/public/build0/v2ui/asset/font/kU6VHbqMAZhaN_nXCmLQsQ.woff) format('woff'), url(https://kms-a.akamaihd.net/dc-1/5.109.67.232/public/build0/v2ui/asset/font/dPJ5r9gl3kK6ijoeP1IRsvY6323mHUZFJMgTvxaG2iE.woff2) format('woff2')}@font-face{font-family:'Lato';font-style:normal;font-weight:300;src:local('Lato Light'), local('Lato-Light'), url(https://kms-a.akamaihd.net/dc-1/5.109.67.232/public/build0/v2ui/asset/font/EsvMC5un3kjyUhB9ZEPPwg.woff2) format('woff2')}@font-face{font-family:'Lato';font-style:normal;font-weight:400;src:local('Lato Regular'), local('Lato-Regular'), url(https://kms-a.akamaihd.net/dc-1/5.109.67.232/public/build0/v2ui/asset/font/1bHRUMxmJHoup12DnI9XmQ.woff) format('woff'), url(https://kms-a.akamaihd.net/dc-1/5.109.67.232/public/build0/v2ui/asset/font/UyBMtLsHKBKXelqf4x7VRQ.woff2) format('woff2')}@font-face{font-family:'Lato';font-style:normal;font-weight:400;src:local('Lato Regular'), local('Lato-Regular'), url(https://kms-a.akamaihd.net/dc-1/5.109.67.232/public/build0/v2ui/asset/font/1YwB1sO8YE1Lyjf12WNiUA.woff2) format('woff2')}@font-face{font-family:'Lato';font-style:normal;font-weight:700;src:local('Lato Bold'), local('Lato-Bold'), url(https://kms-a.akamaihd.net/dc-1/5.109.67.232/public/build0/v2ui/asset/font/I1Pn3gihk5vyP0Yw5GqKsQ.woff) format('woff'), url(https://kms-a.akamaihd.net/dc-1/5.109.67.232/public/build0/v2ui/asset/font/ObQr5XYcoH0WBoUxiaYK3_Y6323mHUZFJMgTvxaG2iE.woff2) format('woff2')}@font-face{font-family:'Lato';font-style:normal;font-weight:700;src:local('Lato Bold'), local('Lato-Bold'), url(https://kms-a.akamaihd.net/dc-1/5.109.67.232/public/build0/v2ui/asset/font/H2DMvhDLycM56KNuAtbJYA.woff2) format('woff2')}
+  <body>    
+    <header>
+      <table>
+        <tr>
+          <td></td>
 
+        </tr>
 
-Body {  
-  font-family: 'Lato';  
-  background-color: white;  
-}  
-button {   
-       background-color: #ffffff;   
-       width: 100%;  
-        color: white;   
-        padding: 15px;   
-        margin: 10px 0px;   
-        border: none;   
-        cursor: pointer;   
-         }   
- form {   
-        border: #000000;   
-    }   
- input[type=text], input[type=password] {   
-        width: 100%;   
-        margin: 8px 0;  
-        padding: 12px 20px;   
-        display: inline-block;    	 
-        box-sizing: border-box;   
-    }  
- button:hover {   
-        opacity: 0.7;   
-    }             
-     
- .container {   
-        padding: 25px;   
-        background-color: white;  
-    } 
+      </table>
 
- h1 {   
-        font-weight: lighter;   
-    } 
-
- h2 {   
-        font-weight: lighter;  
-        font-size: 1.2em;  
-    } 
-
- table {   
-       width: 100%; 
-       border: black;  
-    } 
-
-
- td[type=right] {   
-        text-align: right;   
-    } 
-
-</style>   
-</head>    
-<body>    
-  <center> <img src="{% static 'images/iu.jpg' %}" width="120px"/> </center> 
-  <center> <h1> Willkommen </h1> </center> 
-  <center> <h2> Melde Dich bei der IU - Internationale Hochschule an um fortzufahren. </h2> </center>   
-    <form>  
+    </header>
+    <center> <img src="static\IU.jpg" width="120px"/> </center> 
+    <center> <h1> Willkommen </h1> </center> 
+    <center> <h2> Melde Dich bei der IU - Internationale Hochschule an um fortzufahren. </h2> </center>   
+      <form>  
         <div class="container">   
             <label>Benutzername </label>   
             <input type="text" placeholder="Benutzername eingeben" name="username" required>  
@@ -81,6 +38,6 @@ button {
             </table> 		   
             <button type="submit">Login</button>   
         </div>   
-    </form>     
-</body>     
+      </form>     
+  </body>     
 </html>  
