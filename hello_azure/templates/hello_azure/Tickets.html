@@ -1,0 +1,42 @@
+{% load static %}
+<!doctype html>
+<head>
+    <title>Hello Azure - Python Quickstart</title>
+    <link rel="stylesheet" href="{% static 'styles.css' %}">
+    <link rel="icon"href="{% static 'favicon.ico' %}">
+</head>
+<html>
+   <body>
+     <main class="background">
+        <div>
+          {{response.content}}
+        </div>
+        <div class="header">
+          MELDUNGEN
+        </div>
+        <div>
+          <table class="table">
+            <tr>
+              <th>Dokumententitel</th>
+              <th>Dokumentenart</th> 
+              <th>Kurs</th>
+              <th>Meldungsart</th>
+              <th>Status</th> 
+              <th>Stand</th>
+            </tr>
+            <tr>
+              <td>Skript</td>
+              <td>Skript</td>
+              <td>Theoretische Informatik</td>
+              <td>Fehler</td>
+              <td>Geschlossen</td>
+              <td>05.01.2023</td>
+            </tr>
+          </table>
+          <form>
+            <button type="button" class="button">Neue Meldung</button>
+          </form>
+        </div>
+     </main>      
+   </body>
+</html>
