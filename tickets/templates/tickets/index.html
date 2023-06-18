@@ -4,18 +4,30 @@
     <title>Hello Azure - Python Quickstart</title>
     <link rel="stylesheet" href="{% static 'styles.css' %}">
     <link rel="icon"href="{% static 'favicon.ico' %}">
+    <link href='https://fonts.googleapis.com/css?family=Lato:400,700' rel='stylesheet' type='text/css'>
 </head>
 <html>
+  <header>
+    <nav class="navbar">
+      <div>
+        <a href="/">
+          <img src="{% static 'images/iu_logo_white.png' %}" width="mx-auto" height="55px"
+            alt="Logo IU Internationale Hochschule" />
+        </a>
+      </div>
+      <ul class="nav-list" id="navList">
+      </ul>
+    </nav>
+  </header>
    <body>
      <main class="background">
         <div>
-          {{response.content}}
         </div>
-        <div class="header">
+        <div class="header font">
           MELDUNGEN
         </div>
         <div>
-          <table class="table">
+          <table class="table font">
             <tr>
               <th>Dokumententitel</th>
               <th>Dokumentenart</th> 
@@ -34,7 +46,7 @@
             </tr>
           </table>
           <form>
-            <button type="button" class="button">Neue Meldung</button>
+            <button type="button" class="button font">Neue Meldung</button>
           </form>
         </div>
      </main>      
