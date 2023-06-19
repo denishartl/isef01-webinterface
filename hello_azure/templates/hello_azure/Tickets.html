@@ -1,42 +1,82 @@
-{% load static %}
 <!doctype html>
 <head>
-    <title>Hello Azure - Python Quickstart</title>
+    <title>Tickets Correction Management</title>
     <link rel="stylesheet" href="static\style.css">
     <link rel="icon"href="static\favicon.ico">
 </head>
 <html>
    <body>
-     <main class="background">
-        <div>
-          {{response.content}}
-        </div>
-        <div class="header">
-          MELDUNGEN
-        </div>
-        <div>
-          <table class="table">
-            <tr>
-              <th>Dokumententitel</th>
-              <th>Dokumentenart</th> 
-              <th>Kurs</th>
-              <th>Meldungsart</th>
-              <th>Status</th> 
-              <th>Stand</th>
-            </tr>
-            <tr>
-              <td>Skript</td>
-              <td>Skript</td>
-              <td>Theoretische Informatik</td>
-              <td>Fehler</td>
-              <td>Geschlossen</td>
-              <td>05.01.2023</td>
-            </tr>
-          </table>
-          <form>
-            <button type="button" class="button">Neue Meldung</button>
-          </form>
-        </div>
-     </main>      
+    <header>
+      <nav>
+        <img type="Logo" src="static\IU-logo.svg">
+      </nav>
+    </header>
+      <div class="container">
+        <main>
+            <h1>
+              MELDUNGEN
+            </h1>
+            <div class="containerklein">
+              
+              <form>
+                <button type="Meldung">Neue Meldung</button>
+              </form>
+              
+              <table type="Meldungen">
+                <tr>
+                  <th>Dokumententitel</th>
+                  <th>Dokumentenart</th> 
+                  <th>Kurs</th>
+                  <th>Meldungsart</th>
+                  <th>Status</th> 
+                  <th>Stand</th>
+                </tr>
+                <tr>
+                  <td>Skript</td>
+                  <td>Skript</td>
+                  <td>Theoretische Informatik</td>
+                  <td>Fehler</td>
+                  <td>Geschlossen</td>
+                  <td>05.01.2023</td>
+                </tr>
+                <tr>
+                  <td>Skript</td>
+                  <td>Skript</td>
+                  <td>Theoretische Informatik</td>
+                  <td>Fehler</td>
+                  <td>Geschlossen</td>
+                  <td>05.01.2023</td>
+                </tr>
+                <tr>
+                  <td>Skript</td>
+                  <td>Skript</td>
+                  <td>Theoretische Informatik</td>
+                  <td>Fehler</td>
+                  <td>Geschlossen</td>
+                  <td>05.01.2023</td>
+                </tr>
+                <tr>
+                  <td>Skript</td>
+                  <td>Skript</td>
+                  <td>Theoretische Informatik</td>
+                  <td>Fehler</td>
+                  <td>Geschlossen</td>
+                  <td>05.01.2023</td>
+                </tr>
+                <tr>
+                  <td>Skript</td>
+                  <td>Skript</td>
+                  <td>Theoretische Informatik</td>
+                  <td>Fehler</td>
+                  <td>Geschlossen</td>
+                  <td>05.01.2023</td>
+                </tr>
+              </table>
+            </div>
+        </main> 
+      </div> 
+    <footer>
+
+    </footer>      
    </body>
 </html>
