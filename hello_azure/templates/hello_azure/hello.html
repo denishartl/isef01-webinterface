@@ -11,26 +11,17 @@
 
 
   <body>    
-    <header>
-      <table>
-        <tr>
-          <td></td>
-
-        </tr>
-
-      </table>
-
-    </header>
+    <div class="containerlogin">
     <center> <img src="static\IU.jpg" width="120px"/> </center> 
-    <center> <h1> Willkommen </h1> </center> 
+    <center> <h1> WILLKOMMEN </h1> </center> 
     <center> <h2> Melde Dich bei der IU - Internationale Hochschule an um fortzufahren. </h2> </center>   
       <form>  
-        <div class="container">   
-            <label>Benutzername </label>   
+        <div class="containerlogin">   
+            <label type="login">Benutzername </label>   
             <input type="text" placeholder="Benutzername eingeben" name="username" required>  
-            <label>Passwort </label>   
+            <label type="login">Passwort </label>   
             <input type="password" placeholder="Passwort eingeben" name="password" required> 
-            <table> 
+            <table type="username"> 
               <tr>  
                 <td><input type="checkbox"> Benutzername merken </td>
                 <td type="right"><a href="#"> Passwort vergessen? </a> </td> 
@@ -38,6 +29,7 @@
             </table> 		   
             <button type="submit">Login</button>   
         </div>   
-      </form>     
+      </form>  
+    </div>   
   </body>     
 </html>  

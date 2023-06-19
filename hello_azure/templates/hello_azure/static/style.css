@@ -11,85 +11,164 @@ Abschnitte im Stylesheet
 */
 
 
+/* 1. Grundeinstellungen */
 
+ /* * {outline: 1px solid red;}  */
 
 @font-face{font-family:'Lato';font-style:normal;font-weight:300;src:local('Lato Light'), local('Lato-Light'), url(https://kms-a.akamaihd.net/dc-1/5.109.67.232/public/build0/v2ui/asset/font/kU6VHbqMAZhaN_nXCmLQsQ.woff) format('woff'), url(https://kms-a.akamaihd.net/dc-1/5.109.67.232/public/build0/v2ui/asset/font/dPJ5r9gl3kK6ijoeP1IRsvY6323mHUZFJMgTvxaG2iE.woff2) format('woff2')}@font-face{font-family:'Lato';font-style:normal;font-weight:300;src:local('Lato Light'), local('Lato-Light'), url(https://kms-a.akamaihd.net/dc-1/5.109.67.232/public/build0/v2ui/asset/font/EsvMC5un3kjyUhB9ZEPPwg.woff2) format('woff2')}@font-face{font-family:'Lato';font-style:normal;font-weight:400;src:local('Lato Regular'), local('Lato-Regular'), url(https://kms-a.akamaihd.net/dc-1/5.109.67.232/public/build0/v2ui/asset/font/1bHRUMxmJHoup12DnI9XmQ.woff) format('woff'), url(https://kms-a.akamaihd.net/dc-1/5.109.67.232/public/build0/v2ui/asset/font/UyBMtLsHKBKXelqf4x7VRQ.woff2) format('woff2')}@font-face{font-family:'Lato';font-style:normal;font-weight:400;src:local('Lato Regular'), local('Lato-Regular'), url(https://kms-a.akamaihd.net/dc-1/5.109.67.232/public/build0/v2ui/asset/font/1YwB1sO8YE1Lyjf12WNiUA.woff2) format('woff2')}@font-face{font-family:'Lato';font-style:normal;font-weight:700;src:local('Lato Bold'), local('Lato-Bold'), url(https://kms-a.akamaihd.net/dc-1/5.109.67.232/public/build0/v2ui/asset/font/I1Pn3gihk5vyP0Yw5GqKsQ.woff) format('woff'), url(https://kms-a.akamaihd.net/dc-1/5.109.67.232/public/build0/v2ui/asset/font/ObQr5XYcoH0WBoUxiaYK3_Y6323mHUZFJMgTvxaG2iE.woff2) format('woff2')}@font-face{font-family:'Lato';font-style:normal;font-weight:700;src:local('Lato Bold'), local('Lato-Bold'), url(https://kms-a.akamaihd.net/dc-1/5.109.67.232/public/build0/v2ui/asset/font/H2DMvhDLycM56KNuAtbJYA.woff2) format('woff2')}
 
-/* 1. Grundeinstellungen */
-
-/* * {outline: 1px solid red;} */
-
-
-
-
-
-/*
-
 body {  
-    font-family: 'Lato';   
+    font-family: 'Lato';
+    background-color: black;   
     } 
 
 header {
-    background-color: black;  
     height: 40px;
     }
 
+img[type=Logo]{
+    height: 40px;
+}
 
+footer {
+    height: 40px;
+}
 
-
-
-
-button {   
+h1 {
     font-family: 'Lato';
-    font-size: 1.1em; 
-    background-color: #000;   
-    width: 100%;  
+    background-color: white;
+    margin: 1px;
+    margin-bottom: 20px;
+    padding: 25px;
+    font-size: 25px;
+    font-weight: 950;
+    border-radius: 8px;
+}
+
+.container {   
+    font-family: 'Lato';
+    margin-left: 80px;
+    padding: 20px;   
+    background-color: #F1F2F6;  
+    border-radius: 8px;
+    } 
+
+.containerlogin {   
+    font-family: 'Lato';
+    margin: 30px;
+    padding: 20px; 
+    width: 80%;  
+    background-color: #FFFF;  
+    border-radius: 8px;
+    } 
+
+.containerklein {
+    font-family: 'Lato';
+    padding: 20px;   
+    background-color: #FFF;  
+    border-radius: 8px;
+}
+
+Table[type=Meldungen] {
+    font-family: 'Lato';
+    padding-top: 15px;
+    font-size: 15px;
+    width: 100%;
+    border: none;
+}
+
+th {
+    text-align: left;
+    color: #666666;
+    font-size: 18px;
+    font-weight: 950;
+    border-bottom: 2px solid #666666;
+    padding-bottom: 3px;
+}
+
+Table[type=Meldungen] tr:hover {
+    color: #4374E4;
+}
+
+button[type=Meldung] {   
+    font-family: 'Lato';
+    font-weight: bold;
+    background-color: #7297EB;
+    border: none; 
+    border-radius: 6px;  
+    width: 25%;  
     color: white;   
     cursor: pointer; 
     height: 40px;
     }   
 
+button[type=submit] {   
+    font-family: 'Lato';
+    font-weight: bold;
+    font-size: large;
+    margin-top: 10px;
+    background-color: #7297EB;
+    border: none; 
+    border-radius: 4px;  
+    width: 100%; 
+    color: white;   
+    cursor: pointer; 
+    height: 50px;
+    }   
+
 button:hover {   
-    opacity: 0.7;   
-    } 
+    background-color: #C3D8FF; 
+    color: #4374E4;
+        } 
+
+Table[type=Username] {
+    font-family: 'Lato';
+    font-size: 15px;
+    width: 100%;
+    border: none;
+}
 
 form {   
      border: #000000;   
  }   
+
 input[type=text], input[type=password] {   
     font-family: 'Lato';
+    font-size: 18px;
     width: 100%;   
-    margin: 8px 0;  
-    padding: 12px 20px;   
-    display:inline-block;    	 
-    box-sizing:border-box; 
-
-    border-bottom: black;   
+    border-radius: 5px;  
+    border-color: #F2F2F2; 
+    box-shadow: none;	 
+    box-sizing:border-box;
+    padding-top: 15px; 
+    padding-bottom: 15px; 
+    padding-left: 15px;   
+    color: #000;
+    
  }  
             
-  
-.container {   
-     padding: 25px;   
-     background-color: white;  
- } 
-
-h1 {   
-     font-weight: lighter;   
- } 
-
 h2 {   
      font-weight: lighter;  
      font-size: 1.3em;  
  } 
 
 table {   
+    margin-top: 10px;
     width: 100%; 
     border: black;  
  } 
-
 
 td[type=right] {   
      text-align: right;   
  } 
 
- */
+ label[type=login]{
+    padding-left: 5px;
+    background-color: #FFF;
+    transform: translate(10px; 10px);                      
+ }
+ 
+ link {
+    color: 7297EB;
+
+ }
