@@ -20,6 +20,17 @@
     </nav>
   </header>
    <body>
+    <div class="form-box">
+      <label for="documenttype">Dokumentenart</label>
+      <div class="select">
+        <select name="documenttype" id="documenttype" required>
+          <option hidden> </option>
+          {% for course in courses %} 
+          <option value="{{ course }}">{{ course }}</option>
+          {% endfor %}
+        </select>
+      </div>
+    </div>
      <main class="background">
         <div>
         </div>

@@ -2,12 +2,13 @@ from django.shortcuts import render, redirect
 from django.http import HttpResponse
 from django.views.decorators.csrf import csrf_exempt
 import requests
+import json
 
 def index(request):
-    #response = requests.get("http://localhost:7071/api/GetTickets")
+    response = requests.get("https://iu-isef01-functionapp.azurewebsites.net/api/getcourses")
     print('Request for index page received')
-    #return render(request, 'tickets/index.html', {'response': response})
-    return render(request, 'tickets/index.html')
+    return render(request, 'tickets/index.html', {'courses': json.loads(response.content)})
+    #return render(request, 'tickets/index.html')
 
 @csrf_exempt
 def hello(request):
