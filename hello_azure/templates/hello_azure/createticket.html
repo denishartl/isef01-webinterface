@@ -1,0 +1,96 @@
+{% load static %}
+<!doctype html>
+
+<!--Hier kommt alles Allgemeine zur Seite rein-->
+
+<head>
+  <title>IU Ticketsystem</title>
+  <meta name="viewport" content="width=devicewidth, initial-scale=1.0" />
+  <link rel="stylesheet" href="{% static 'bootstrap/css/styles.css' %}">
+  <link rel="icon" href="{% static 'favicon_iu_logo.ico' %}">
+</head>
+
+
+<body>
+  <header>
+    <nav class="navbar">
+      <div>
+        <a href="/">
+          <img src="{% static 'images/iu_logo_white.png' %}" width="mx-auto" height="55px"
+            alt="Logo IU Internationale Hochschule" />
+        </a>
+      </div>
+      <ul class="nav-list" id="navList">
+        <li class="list-item"><a href="/">Meldungsübersicht</a></li>
+      </ul>
+    </nav>
+  </header>
+
+
+
+
+  <!-- Formular -->
+  <form class="center-form" method="post" action="hello">
+    <h1 class="form-heading, middle">Neue Meldung erstellen</h1>
+
+    <div class="form-box">
+      <label for="course">Kurs</label>
+      <input type="text" name="course" id="course" required>
+    </div>
+
+    <div class="form-box">
+      <label for="documenttype">Dokumentenart</label>
+      <div class="select">
+        <select name="documenttype" id="documenttype" required>
+          <option hidden> </option>
+          <option value="Fragen">Fragen</option>
+          <option value="Literaturangaben">Literaturangaben</option>
+          <option value="Lösungsheft">Lösungsheft</option>
+          <option value="Skript">Skript</option>
+          <option value="Tutorium">Tutorium</option>
+          <option value="Vodcast">Vodcast</option>
+          <option value="Sonstiges">Sonstiges</option>
+        </select>
+      </div>
+    </div>
+
+    <div class="form-box">
+      <label for="title">Dokumententitel</label>
+      <input type="text" name="title" id="title" required>
+    </div>
+
+    <div class="form-box">
+      <label for="tickettype">Meldungsart</label>
+      <div class="select">
+        <select name="tickettype" id="tickettype" required>
+          <option hidden> </option>
+          <option value="Ergänzung">Ergänzung</option>
+          <option value="Fehler">Fehler</option>
+          <option value="Verbesserungsvorschlag">Verbesserungsvorschlag</option>
+        </select>
+      </div>
+    </div>
+
+    <div class="form-box">
+      <label for="description">Beschreibung</label>
+      <textarea name="description" id="description" required cols="50" rows="4"></textarea>
+    </div>
+
+
+    <div class="form-box">
+      <label for="attachment"> </label>
+      <input type="file" id="attachment" name="attachment" accept="image/png, image/jpeg, .pdf">
+    </div>
+
+    <div class="form-box middle">
+      <button type="submit">Absenden</button>
+    </div>
+
+
+
+  </form>
+  <footer></footer>
+</body>
+
+
+</html>
