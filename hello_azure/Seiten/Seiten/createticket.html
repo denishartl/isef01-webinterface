@@ -3,6 +3,8 @@
   <title>IU Ticketsystem</title>
   <link rel="stylesheet" href="static\style.css">
   <link rel="icon"href="static\favicon.ico">
+  <script src="DropdownCourse.js"></script>
+  <script src="DropdownDocument.js"></script>
 </head>
 
 
@@ -23,13 +25,15 @@
 
           <div type="Meldung">
             <label type="description" for="course">Kurs</label>
-            <input type="text" placeholder="Name des Kurses" name="course" id="course" required>
+            <select id="dynamicDropdownCourse" type="ticket" name="course" id="course" required>
+              <option value=""></option>
+            </select>  
           </div> 
 
           <div type="Meldung">
-            <label type="description" for="documenttype">Dokumentenart</label>
+            <label type="description" for="doctype">Dokumentenart</label>
               <div class="select">
-                <select type="ticket" name="documenttype" id="documenttype" required>
+                <select type="ticket" name="doctype" id="doctype" required>
                   <option hidden> </option>
                   <option value="Fragen">Fragen</option>
                   <option value="Literaturangaben">Literaturangaben</option>
@@ -43,8 +47,8 @@
             </div>  
 
             <div type="Meldung">
-              <label type="description" for="title">Dokumententitel</label>
-              <input type="text" placeholder="Name des Dokuments" name="title" id="title" required>
+              <label type="description" for="title">Dokument</label>
+              <input type="text" name="document" id="document" required>
             </div>  
 
             <div type="Meldung">
