@@ -2,7 +2,7 @@ var dropdown = document.getElementById('dynamicDropdown');
 
 async function populateDropdown() {
     try {
-        var response = await fetch('https://iu-isef01-functionapp.azurewebsites.net/api/GetCourses?', {
+        var response = await fetch('https://iu-isef01-functionapp.azurewebsites.net/api/GetCourses/', {
             method: 'GET',
             headers: {
                 'Access-Control-Allow-Origin': '*', 

@@ -20,3 +20,8 @@ def hello(request):
             return render(request, 'hello_azure/hello.html', context)
     else:
         return redirect('index')
+    
+
+def test(request):
+    print('Request for test page received')
+    return render(request, 'hello_azure/test.html')
