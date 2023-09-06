@@ -15,7 +15,7 @@ async function populateDropdown() {
             var optionElement = document.createElement('option');
             optionElement.value = option.id; 
             optionElement.textContent = option.shortname; 
-            dropdown.appendChild(option);
+            dropdown.appendChild(optionElement);
         });
     } catch (error) {
         console.error('Fehler beim Befüllen der Dropdown-Liste:', error);
