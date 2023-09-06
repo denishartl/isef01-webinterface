@@ -1,4 +1,4 @@
-var dropdown = document.getElementById('dynamicDropdown');
+const dropdown = document.getElementById('dynamicDropdown');
 
 async function populateDropdown() {
     try {
@@ -6,7 +6,7 @@ async function populateDropdown() {
         const data = await response.json();
         
         data.forEach(option => {
-            var optionElement = document.createElement('option');
+            const optionElement = document.createElement('option');
             optionElement.value = option.id; 
             optionElement.textContent = option.shortname; 
             dropdown.appendChild(option);
