@@ -1,5 +1,5 @@
 window.onload = function () {
-    const dropdown = document.getElementById('dynamicDropdown');
+    const dropdown = document.getElementById('dynamicDropdownCourse');
 
     async function populateDropdown() {
         try {
