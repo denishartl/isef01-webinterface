@@ -1,23 +1,21 @@
-// script.js
+window.onload = function () {
+    const dropdown = document.getElementById('dynamicDropdown');
 
-const dropdown = course.getElementById('dynamicDropdownCourse');
+    async function populateDropdown() {
+        try {
+            const response = await fetch('https://iu-isef01-functionapp.azurewebsites.net/api/GetCourses?');
+            const data = await response.json();
 
-// Funktion zum Befüllen der Dropdown-Liste
-async function populateDropdown() {
-    try {
-        const response = await fetch('http://localhost:7871/api/GetCourse');
-        const data = await response.json();
-
-        data.forEach(item => {
-            const option = document.createElement('option');
-            option.value = item.id;
-            option.textContent = item.name;
-            dropdown.appendChild(option);
-        });
-    } catch (error) {
-        console.error('Fehler beim Befüllen der Dropdown-Liste:', error);
+            data.forEach(option => {
+                const optionElement = document.createElement('option');
+                optionElement.value = option.id;
+                optionElement.textContent = option.shortname;
+                dropdown.appendChild(optionElement);
+            });
+        } catch (error) {
+            console.error('Fehler beim Befüllen der Dropdown-Liste:', error);
+        }
     }
-}
 
-// Dropdown beim Laden der Seite befüllen
-populateDropdown();
+    populateDropdown();
+};
