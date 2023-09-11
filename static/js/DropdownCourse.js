@@ -1,16 +1,16 @@
-window.onload = function () {
+$(document).ready(function () {
     const dropdown = document.getElementById('dynamicDropdownCourse');
 
-    async function populateDropdown() {
+    async function populateDropdownCourse() {
         try {
             const response = await fetch('https://iu-isef01-functionapp.azurewebsites.net/api/GetCourses?');
             const data = await response.json();
 
             // Fügt Daten zum Dropdown-Feld hinzu
-            data.forEach(option => {
+            data.forEach(course => {
                 const optionElement = document.createElement('option');
-                optionElement.value = option.id;
-                optionElement.textContent = option.shortname;
+                optionElement.value = course.id;
+                optionElement.textContent = course.shortname;
                 dropdown.appendChild(optionElement);
             });
 
@@ -21,5 +21,5 @@ window.onload = function () {
         }
     }
 
-    populateDropdown();
-};
+    populateDropdownCourse();
+});
