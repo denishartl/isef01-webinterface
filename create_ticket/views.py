@@ -20,3 +20,8 @@ def create_ticket(request):
             return render(request, 'create_ticket/hello.html', context)
     else:
         return redirect('index')
+    
+
+def test(request):
+    print('Request for test page received')
+    return render(request, 'hello_azure/test.html')
