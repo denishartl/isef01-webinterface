@@ -17,6 +17,7 @@ from django.contrib import admin
 from django.urls import include, path
 
 urlpatterns = [
-    path('', include('hello_azure.urls')),
+    path('', include('create_ticket.urls')),
     path('admin/', admin.site.urls),
+    path('create_ticket/', include('create_ticket.urls')),
 ]

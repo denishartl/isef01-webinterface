@@ -4,10 +4,10 @@ from django.views.decorators.csrf import csrf_exempt
 
 def index(request):
     print('Request for index page received')
-    return render(request, 'hello_azure/index.html')
+    return render(request, 'create_ticket/index.html')
 
 @csrf_exempt
-def hello(request):
+def create_ticket(request):
     if request.method == 'POST':
         name = request.POST.get('name')
         
@@ -17,6 +17,6 @@ def hello(request):
         else:
             print("Request for hello page received with name=%s" % name)
             context = {'name': name }
-            return render(request, 'hello_azure/hello.html', context)
+            return render(request, 'create_ticket/hello.html', context)
     else:
         return redirect('index')
