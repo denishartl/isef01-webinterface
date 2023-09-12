@@ -1,0 +1,65 @@
+{% load static %}
+<!doctype html>
+<head>
+    <title>Hello Azure - Python Quickstart</title>
+    <link rel="stylesheet" href="{% static 'styles.css' %}">
+    <link rel="icon"href="{% static 'favicon.ico' %}">
+    <link href='https://fonts.googleapis.com/css?family=Lato:400,700' rel='stylesheet' type='text/css'>
+</head>
+<html>
+  <header>
+    <nav class="navbar">
+      <div>
+        <a href="/">
+          <img src="{% static 'images/iu_logo_white.png' %}" width="mx-auto" height="55px"
+            alt="Logo IU Internationale Hochschule" />
+        </a>
+      </div>
+      <ul class="nav-list" id="navList">
+      </ul>
+    </nav>
+  </header>
+   <body>
+    <div class="form-box">
+      <label for="documenttype">Dokumentenart</label>
+      <div class="select">
+        <select name="documenttype" id="documenttype" required>
+          <option hidden> </option>
+          {% for course in courses %} 
+          <option value="{{ course }}">{{ course }}</option>
+          {% endfor %}
+        </select>
+      </div>
+    </div>
+     <main class="background">
+        <div>
+        </div>
+        <div class="header font">
+          MELDUNGEN
+        </div>
+        <div>
+          <table class="table font">
+            <tr>
+              <th>Dokumententitel</th>
+              <th>Dokumentenart</th> 
+              <th>Kurs</th>
+              <th>Meldungsart</th>
+              <th>Status</th> 
+              <th>Stand</th>
+            </tr>
+            <tr>
+              <td>Skript</td>
+              <td>Skript</td>
+              <td>Theoretische Informatik</td>
+              <td>Fehler</td>
+              <td>Geschlossen</td>
+              <td>05.01.2023</td>
+            </tr>
+          </table>
+          <form>
+            <button type="button" class="button font">Neue Meldung</button>
+          </form>
+        </div>
+     </main>      
+   </body>
+</html>

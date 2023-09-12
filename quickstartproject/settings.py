@@ -38,6 +38,8 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
+    'hello_azure',
+    'tickets'
     'create_ticket',
 ]
 
@@ -126,3 +128,4 @@ STATIC_URL = 'static/'
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
 SETTINGS_PATH = os.path.dirname(os.path.dirname(__file__))
+
