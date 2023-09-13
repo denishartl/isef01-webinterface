@@ -39,7 +39,9 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'hello_azure',
-    'corsheaders'
+    'corsheaders',
+    'create_ticket',
+    'tickets'
 ]
 
 MIDDLEWARE = [
