@@ -10,6 +10,10 @@ def index(request):
     return render(request, 'tickets/index.html', {'courses': json.loads(response.content)})
     #return render(request, 'tickets/index.html')
 
+def create_ticket(request):
+    return render(request, 'tickets/createticket.html')
+    #return render(request, 'tickets/index.html')
+
 @csrf_exempt
 def hello(request):
     if request.method == 'POST':
