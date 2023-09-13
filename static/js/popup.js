@@ -227,5 +227,5 @@ async function init() {
     
 
 /* Hier wird die init Funktion aufgerufen */
-
+console.log('hi!');
 init();
