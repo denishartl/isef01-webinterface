@@ -1,0 +1,80 @@
+<!doctype html>
+<head>
+    <title>Tickets Correction Management</title>
+    <link rel="stylesheet" href="style.css"> static\css\style.css
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery.tablesorter/2.31.3/js/jquery.tablesorter.min.js"></script>
+    <script src="tablefilter.js"></script>
+  </head>
+<html>
+   <body>
+
+    <header>
+      <img type="Logo" src="images/IU-logo.svg">
+      <nav>
+      </nav>
+    </header>
+
+    <main>
+      <div class="container">
+        <h1>MELDUNGEN</h1>
+          <div class="containerklein">
+            
+            <table type="username"> 
+              <tr>  
+                <td><a type="button" href="http://127.0.0.1:3000/hello_azure/templates/hello_azure/createticket.html" onclick="window.open(this.href, 'Neue Meldung', 'width=800,height=750'); return false">Neue Meldung</a></td>
+                <td type="right"><input type="text" type="search-box" placeholder="Ticket suchen..."></td> 
+              </tr>
+            </table>  
+
+            <table type="Meldungen" id="meldungenTable">
+              <thead>
+              <tr>
+                  <th data-filter="text">Dokumententitel</th>
+                  <th data-filter="text">Dokumentenart</th>
+                  <th data-filter="text">Kurs</th>
+                  <th data-filter="text">Meldungsart</th>
+                  <th data-filter="text">Status</th>
+                  <th data-filter="date">Stand</th>
+              </tr>
+              <tr>
+                <td>Skript</td>
+                <td>Skript</td>
+                <td>Theoretische Informatik</td>
+                <td>Fehler</td>
+                <td>Geschlossen</td>
+                <td>05.01.2023</td>
+              </tr>
+              <tr>
+                <td>Skript</td>
+                <td>Skript</td>
+                <td>Theoretische Informatik</td>
+                <td>Fehler</td>
+                <td>Geschlossen</td>
+                <td>05.01.2023</td>
+              </tr>
+              <tr>
+                <td>Skript</td>
+                <td>Skript</td>
+                <td>Theoretische Informatik</td>
+                <td>Fehler</td>
+                <td>Geschlossen</td>
+                <td>05.01.2023</td>
+              </tr>
+              <tr>
+                <td>Skript</td>
+                <td>Skript</td>
+                <td>Theoretische Informatik</td>
+                <td>Fehler</td>
+                <td>Geschlossen</td>
+                <td>05.01.2023</td>
+              </tr>
+            </table>
+          </div>
+      </div> 
+    </main>
+    
+    <footer></footer>      
+   
+  </body>
+</html>
