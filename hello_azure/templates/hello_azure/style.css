@@ -77,9 +77,47 @@ a[type=button] {
     text-decoration: none;
     display: inline-block;
     margin: 4px 2px;
-    cursor: pointer;
     }   
     
+a[type=buttonsend] {   
+    font-family: 'Lato';
+    font-weight: bold;
+    background-color: #7297EB;
+    border: none; 
+    border-radius: 6px;  
+    color: white;   
+    cursor: pointer; 
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    margin: 4px 2px;
+    width:100%;
+    padding-top: 5px;
+    padding-bottom: 5px;
+    }
+
+a[type=buttonclose] {   
+    font-family: 'Lato';
+    font-weight: bold;
+    background-color: #62646c;
+    border: none; 
+    border-radius: 6px;  
+    color: white;   
+    cursor: pointer; 
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    margin: 4px 2px;
+    width:100%;
+    padding-top: 5px;
+    padding-bottom: 5px;
+    }  
+    
+a[type=buttonclose]:hover {
+    background-color: #000; 
+    color:#FFF;
+}
+
 a[type=buttonfull] {   
         font-family: 'Lato';
         font-weight: bold;
@@ -243,12 +281,30 @@ input[type=search-box] {
 
 /* 6. Tabellen */
 
-Table[type=Meldungen] {
+.tablesorter {
     font-family: 'Lato';
     padding-top: 15px;
     font-size: 15px;
     width: 100%;
     border: none;
+}
+
+.tablesorter thead th {
+    cursor: pointer;
+}
+
+/* Stil für sortierte Spalten */
+.tablesorter th.headerSortUp {
+    background-image: url('aufsteigender-pfeil.png');
+}
+
+.tablesorter th.headerSortDown {
+    background-image: url('absteigender-pfeil.png');
+}
+
+/* Hinzufügen von Abständen zwischen den Tabellenzeilen */
+.tablesorter tbody tr:nth-child(odd) {
+    background-color: #f2f2f2;
 }
 
 Table[type=Meldungen] tr:hover {

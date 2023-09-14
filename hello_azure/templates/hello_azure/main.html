@@ -5,6 +5,7 @@
     <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery.tablesorter/2.31.3/js/jquery.tablesorter.min.js"></script>
     <script src="tablefilter.js"></script>
+    <script src="GetTickets.js"></script>
   </head>
 <html>
    <body>
@@ -27,48 +28,25 @@
               </tr>
             </table>  
 
-            <table type="Meldungen" id="meldungenTable">
+            <table class="tablesorter" id="meldungenTable" data-tablesorter="true">
               <thead>
-              <tr>
-                  <th data-filter="text">Dokumententitel</th>
-                  <th data-filter="text">Dokumentenart</th>
-                  <th data-filter="text">Kurs</th>
-                  <th data-filter="text">Meldungsart</th>
-                  <th data-filter="text">Status</th>
-                  <th data-filter="date">Stand</th>
-              </tr>
-              <tr>
-                <td>Skript</td>
-                <td>Skript</td>
-                <td>Theoretische Informatik</td>
-                <td>Fehler</td>
-                <td>Geschlossen</td>
-                <td>05.01.2023</td>
-              </tr>
-              <tr>
-                <td>Skript</td>
-                <td>Skript</td>
-                <td>Theoretische Informatik</td>
-                <td>Fehler</td>
-                <td>Geschlossen</td>
-                <td>05.01.2023</td>
-              </tr>
-              <tr>
-                <td>Skript</td>
-                <td>Skript</td>
-                <td>Theoretische Informatik</td>
-                <td>Fehler</td>
-                <td>Geschlossen</td>
-                <td>05.01.2023</td>
-              </tr>
-              <tr>
-                <td>Skript</td>
-                <td>Skript</td>
-                <td>Theoretische Informatik</td>
-                <td>Fehler</td>
-                <td>Geschlossen</td>
-                <td>05.01.2023</td>
-              </tr>
+                  <tr>
+                      <th data-filter="text">Nr.</th>
+                      <th data-filter="text">Dokumententitel</th>
+                      <th data-filter="text">Dokumentenart</th>
+                      <th data-filter="text">Kurs</th>
+                      <th data-filter="text">Meldungsart</th>
+                      <th data-filter="text">Status</th>
+                      <th data-filter="date">Stand</th>
+                  </tr>
+              </thead>
+              <tbody id="tableBody"> 
+              </tbody>
+          </table>
+      </div>
+  </div>
+</main>
+            
             </table>
           </div>
       </div> 
