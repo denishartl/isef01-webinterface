@@ -1,14 +1,17 @@
 <!doctype html>
+<html>
 <head>
     <title>Tickets Correction Management</title>
-    <link rel="stylesheet" href="style.css"> static\css\style.css
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/1.11.5/css/jquery.dataTables.min.css">
     <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery.tablesorter/2.31.3/js/jquery.tablesorter.min.js"></script>
-    <script src="tablefilter.js"></script>
-    <script src="GetTickets.js"></script>
-  </head>
-<html>
-   <body>
+    <script type="text/javascript" charset="utf8" src="https://cdn.datatables.net/1.11.5/js/jquery.dataTables.min.js"></script>
+    <script src="js/GetTickets.js"></script>
+    <script src="js/tablefilter.js"></script>
+
+</head>
+
+<body>
 
     <header>
       <img type="Logo" src="images/IU-logo.svg">
@@ -21,14 +24,9 @@
         <h1>MELDUNGEN</h1>
           <div class="containerklein">
             
-            <table type="username"> 
-              <tr>  
-                <td><a type="button" href="http://127.0.0.1:3000/hello_azure/templates/hello_azure/createticket.html" onclick="window.open(this.href, 'Neue Meldung', 'width=800,height=750'); return false">Neue Meldung</a></td>
-                <td type="right"><input type="text" type="search-box" placeholder="Ticket suchen..."></td> 
-              </tr>
-            </table>  
+            <a type="button" href="http://127.0.0.1:3000/hello_azure/templates/hello_azure/createticket.html" onclick="window.open(this.href, 'Neue Meldung', 'width=800,height=750'); return false">Neue Meldung</a></td>
 
-            <table class="tablesorter" id="meldungenTable" data-tablesorter="true">
+            <table class="display" id="meldungenTable" data-tablesorter="true">
               <thead>
                   <tr>
                       <th data-filter="text">Nr.</th>

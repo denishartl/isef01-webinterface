@@ -143,7 +143,6 @@ a[type=submit] {
     cursor: pointer; 
     padding: 5px 235px;
     text-align: center;
-    text-decoration: none;
     display: inline-block;
     margin: 4px 2px;
     width: 80;
@@ -154,18 +153,6 @@ a[type=submit]:hover {
     color: #4374E4;
     } 
 
-
-.error {
-    font-size: 1.3em;  
-    font-weight: bold;
-    color: red;
-}
-
-.success {
-    font-size: 1.3em;  
-    font-weight: bold;
-    color: green;
-}
 
 .error {
     font-size: 1.3em;  
@@ -280,32 +267,6 @@ input[type=search-box] {
 }
 
 /* 6. Tabellen */
-
-.tablesorter {
-    font-family: 'Lato';
-    padding-top: 15px;
-    font-size: 15px;
-    width: 100%;
-    border: none;
-}
-
-.tablesorter thead th {
-    cursor: pointer;
-}
-
-/* Stil für sortierte Spalten */
-.tablesorter th.headerSortUp {
-    background-image: url('aufsteigender-pfeil.png');
-}
-
-.tablesorter th.headerSortDown {
-    background-image: url('absteigender-pfeil.png');
-}
-
-/* Hinzufügen von Abständen zwischen den Tabellenzeilen */
-.tablesorter tbody tr:nth-child(odd) {
-    background-color: #f2f2f2;
-}
 
 Table[type=Meldungen] tr:hover {
     color: #4374E4;
