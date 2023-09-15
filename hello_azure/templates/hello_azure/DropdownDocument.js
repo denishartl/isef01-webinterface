@@ -2,10 +2,15 @@ $(document).ready(function () {
     const selectedDocumentDropdown = document.getElementById('selectedDocument');
     const customDocumentInput = document.getElementById('customDocument');
 
-    async function updateDocumentDropdown(course_Id) {
+    async function updateDocumentDropdown(course_Id, document_doctype) {
         try {
+            let apiUrl = 'https://iu-isef01-functionapp.azurewebsites.net/api/GetDocumentsByCourseandType?course=' + course_Id;
 
-            const response = await fetch('https://iu-isef01-functionapp.azurewebsites.net/api/GetDocumentsByCourse?course=' + course_Id);
+            if (document_doctype) {
+                apiUrl += '&doctype=' + document_doctype;
+            }
+
+            const response = await fetch(apiUrl);
             const data = await response.json();
 
             selectedDocumentDropdown.innerHTML = '';
@@ -25,6 +30,13 @@ $(document).ready(function () {
 
     $('#dynamicDropdownCourse').on('change', function () {
         const selectedCourseId = $(this).val();
-        updateDocumentDropdown(selectedCourseId);
+        const selectedDocumentType = $('#doctype').val();
+        updateDocumentDropdown(selectedCourseId, selectedDocumentType);
+    });
+
+    $('#doctype').on('change', function () {
+        const selectedCourseId = $('#dynamicDropdownCourse').val();
+        const selectedDocumentType = $(this).val();
+        updateDocumentDropdown(selectedCourseId, selectedDocumentType);
     });
 });
