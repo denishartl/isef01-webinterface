@@ -1,8 +1,8 @@
- // Funktion zum Formatieren des Datums im gewünschten Format
- function formatCreatedAtDate(createdAt) {
+// Funktion zum Formatieren des Datums
+function formatCreatedAtDate(createdAt) {
     const date = new Date(createdAt);
     const day = date.getDate().toString().padStart(2, '0');
-    const month = (date.getMonth() + 1).toString().padStart(2, '0'); // Monate sind nullbasiert
+    const month = (date.getMonth() + 1).toString().padStart(2, '0'); 
     const year = date.getFullYear();
     const hours = date.getHours().toString().padStart(2, '0');
     const minutes = date.getMinutes().toString().padStart(2, '0');
@@ -40,19 +40,17 @@ async function getCourseNameById(id) {
     try {
         const response = await fetch(`https://iu-isef01-functionapp.azurewebsites.net/api/GetCourse?id=${id}`);
         const data = await response.json();
-        return data.course_shortname;
+        return data.shortname;
     } catch (error) {
         console.error('Fehler beim Abrufen des Kursnamens: ', error);
         return '';
     }
 }
 
+
 // Funktion zum Laden der Daten und Befüllen der Tabelle
 async function loadTableData() {
     try {
-        const response = await fetch('https://iu-isef01-functionapp.azurewebsites.net/api/GetTickets?');
-        const data = await response.json();
-
         const table = $('#meldungenTable').DataTable({
             language: {
                 "sEmptyTable":     "Keine Daten verfügbar in der Tabelle",
@@ -77,12 +75,12 @@ async function loadTableData() {
                     "sSortDescending": ": aktivieren, um Spalte absteigend zu sortieren"
                 }
             },
-            data: data,
+            data: [], 
             columns: [
                 { data: 'id', title: 'Nr.' },
-                { data: 'document_id', title: 'Dokumententitel' },
-                { data: 'document_id', title: 'Dokumentenart' },
-                { data: 'course_id', title: 'Kurs' },
+                { data: 'documentName', title: 'Dokumententitel' },
+                { data: 'documentType', title: 'Dokumentenart' },
+                { data: 'ccourseName', title: 'Kurs' },
                 { data: 'ticket_type', title: 'Meldungsart' },
                 { data: 'status', title: 'Status' },
                 { 
@@ -95,18 +93,12 @@ async function loadTableData() {
             ]
         });
 
-        // Aktivieren der Column Filters-Erweiterung
-        table.columns().every(function () {
-            var that = this;
+        // Befüllen der Tabelle mit Daten
+        const response = await fetch('https://iu-isef01-functionapp.azurewebsites.net/api/GetTickets?');
+        const data = await response.json();
 
-            $('input', this.footer()).on('keyup change', function () {
-                if (that.search() !== this.value) {
-                    that
-                        .search(this.value)
-                        .draw();
-                }
-            });
-        });
+        // Aktualisieren der DataTable mit den abgerufenen Daten
+        table.clear().rows.add(data).draw();
 
         // Befüllen der Spalten für Dokumentennamen, Dokumentenart und Kursnamen
         const rows = table.rows().nodes();
@@ -127,4 +119,35 @@ async function loadTableData() {
     }
 }
 
-window.addEventListener('load', loadTableData);               
+
+// Laden der Tabelle und Aktivieren des Filters, wenn Seite geladen ist
+$(document).ready(function() {
+    loadTableData();
+});
+
+// Aktivieren der Column Filters-Erweiterung
+$(document).ready(function() {
+    $('#meldungenTable tfoot th').each(function() {
+        var title = $(this).text();
+        $(this).html('<input type="text" placeholder="Suchen in ' + title + '" />');
+    });
+
+    var table = $('#meldungenTable').DataTable({
+        searchPanes: {
+            viewTotal: true
+        },
+    });
+ 
+     table.columns().every( function() {
+        var that = this;
+  
+        $('input', this.footer()).on('keyup change', function() {
+            if (that.search() !== this.value) {
+                that
+                    .search(this.value)
+                    .draw();
+            }
+        });
+    });
+});
+
