@@ -1,0 +1,74 @@
+<!doctype html>
+<head>
+  <title>IU Ticketsystem</title>
+  <link rel="stylesheet" href="style.css">
+  <script src="js/ShowTicket.js"></script>
+</head>
+
+
+<body>
+  <header>
+      <img type="Logo" src="images\IU-logo.svg">
+  </header>
+
+  <nav></nav>
+
+  <main>
+    <div class="container">
+      <h1>MELDUNG ANZEIGEN</h1>
+
+      <div id="status-bar">
+        <span class="status" id="status-offen">Offen</span>
+        <span class="status" id="status-bearbeitung">In Bearbeitung</span>
+        <span class="status" id="status-abgeschlossen">Abgeschlossen</span>
+      </div>
+      
+      <div class="containerklein">
+
+        <form method="post" action="hello">
+
+          <div type="Meldung">
+            <label type="description">Kurs</label>
+            <p></p><label type="content" id="course">Kurs</label></p> 
+          </div> 
+          <div type="Meldung">
+            <label type="description">Dokumentenart</label>
+            <p><label type="content" id="doctype">Dokumentenart</label></p>
+            </div>  
+            <div type="Meldung">
+              <label type="description">Dokument</label>
+              <p><label type="content" id="title">Dokument</label></p> 
+             </div>
+            <div type="Meldung">
+            <label type="description" for="tickettype">Meldungsart</label>
+            <p><label type="content" id="tickettype">Meldungsart</label></p> 
+            </div>  
+            <div type="Meldung">
+              <label type="description" for="description">Beschreibung</label>
+              <p><label type="content" id="description">Beschreibung</label></p> 
+            </div>  
+            <div type="Meldung"></div>
+              <label for="attachment"> </label>
+              <input type="file" id="attachment" name="attachment" accept="image/png, image/jpeg, .pdf">
+            </div>  
+      
+            <table type="username"> 
+              <tr>  
+                <td><a type="buttonsend">Absenden</a></td>
+                <td><a type="buttonclose" onclick="window.close();">Abbrechen</a></td> 
+              </tr>
+            </table> 
+            
+            
+          </form>
+        </div>
+      </div>
+    </main>
+
+
+  <footer></footer>
+
+</body>
+
+
+</html>
