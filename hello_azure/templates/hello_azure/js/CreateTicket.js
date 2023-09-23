@@ -47,7 +47,6 @@ async function getScriptFromDocumentList(documents) {
 
 async function getDocumentFromLocalStorageCourses(document_title) {
     var all_documents = JSON.parse(localStorage.getItem('course_documents'));
-    console.log(all_documents)
     for (var i = 0; i < all_documents.length; i++) {
         if (all_documents[i].title == document_title) {
             return all_documents[i]
@@ -103,11 +102,8 @@ document.getElementById('documenttype').addEventListener('change', async functio
     document.getElementById('selectedDocument').innerHTML = '';
     var selected_course_name = document.getElementById('dynamicDropdownCourse').value;
     if (selected_course_name != " ") { // Still need to add actions when no course is selected
-        console.log('hello')
         var course_documents = await getDocumentsByCourse(localStorage.getItem('course_id'));
         for (var i = 0; i < course_documents.length; i++) {
-            console.log((course_documents[i].doctype).toUpperCase())
-            console.log((document.getElementById('documenttype').value).toUpperCase())
             if ((course_documents[i].doctype).toUpperCase() == (document.getElementById('documenttype').value).toUpperCase()) {
                 await addOptionSelect('selectedDocument', course_documents[i].title)
             }
@@ -123,7 +119,6 @@ document.getElementById('selectedDocument').addEventListener('clear', function (
 document.getElementById('selectedDocument').addEventListener('change', async function () {
 
     var course_document = await getDocumentFromLocalStorageCourses(document.getElementById('selectedDocument').value);
-    console.log(course_document)
     localStorage.setItem('document_id', course_document.id);
 });
 
@@ -145,19 +140,13 @@ document.getElementById('attachment').addEventListener('change', async function 
 });
 
 document.getElementById('submit').addEventListener('click', async function () {
-    console.log(1)
     document.getElementById('error').hidden = true;
     document.getElementById('success').hidden = true;
     if (document.getElementById('dynamicDropdownCourse').value != " ") {
-        console.log(2)
         if (document.getElementById('documenttype').value != "") {
-            console.log(3)
             if (document.getElementById('selectedDocument').value != "") {
-                console.log(4)
                 if (document.getElementById('tickettype').value != "") {
-                    console.log(5)
                     if (document.getElementById('description').value != ""){
-                        console.log(6)
                         var success = 0;
                         response_ticket = await createTicket(
                             author_id = localStorage.getItem('user_id'),
