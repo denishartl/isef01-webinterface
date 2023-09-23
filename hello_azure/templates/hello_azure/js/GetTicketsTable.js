@@ -48,6 +48,15 @@ async function getCourseNameById(id) {
 }
 
 
+async function fillColumns(data) {
+    // Die beiden Abfragen für dokumente kann man auch zusammenfassen
+    data['documentTitle'] = await getDocumentTitleById(data['document_id']);
+    data['documentType'] = await getDocumentTypeById(data['document_id']);
+    data['courseName'] = await getCourseNameById(data['course_id']);
+
+    return data;
+}
+
 // Funktion zum Laden der Daten und Befüllen der Tabelle
 async function loadTableData() {
     try {
@@ -78,9 +87,9 @@ async function loadTableData() {
             data: [], 
             columns: [
                 { data: 'id', title: 'Nr.' },
-                { data: 'documentName', title: 'Dokumententitel' },
+                { data: 'documentTitle', title: 'Dokumententitel' },
                 { data: 'documentType', title: 'Dokumentenart' },
-                { data: 'ccourseName', title: 'Kurs' },
+                { data: 'courseName', title: 'Kurs' },
                 { data: 'ticket_type', title: 'Meldungsart' },
                 { data: 'status', title: 'Status' },
                 { 
@@ -96,24 +105,13 @@ async function loadTableData() {
         // Befüllen der Tabelle mit Daten
         const response = await fetch('https://iu-isef01-functionapp.azurewebsites.net/api/GetTickets?');
         const data = await response.json();
-
-        // Aktualisieren der DataTable mit den abgerufenen Daten
-        table.clear().rows.add(data).draw();
-
-        // Befüllen der Spalten für Dokumentennamen, Dokumentenart und Kursnamen
-        const rows = table.rows().nodes();
-        for (let i = 0; i < rows.length; i++) {
-            const row = rows[i];
-            const rowData = table.row(row).data();
-
-            const documentTitle = await getDocumentTitleById(rowData.document_id);
-            const documentType = await getDocumentTypeById(rowData.document_id);
-            const courseName = await getCourseNameById(rowData.course_id);
-
-            $(row).find('td:eq(1)').html(documentTitle);
-            $(row).find('td:eq(2)').html(documentType);
-            $(row).find('td:eq(3)').html(courseName);
-        }
+        const promises = [];
+        for (let i = 0; i < data.length; i++) {
+           promises.push(data[i] = await fillColumns(data[i]));
+        };
+        Promise.all(promises)
+            .then(() => {table.clear().rows.add(data).draw();}
+            );
     } catch (error) {
         console.error('Fehler beim Abrufen der Daten: ', error);
     }
