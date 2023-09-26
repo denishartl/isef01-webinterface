@@ -15,3 +15,7 @@ def main(request):
 def createticket(request):
     print('Request for createticket page received')
     return render(request, 'tickets/createticket.html')
+
+def displayticket(request):
+    print('Request for displayticket page received')
+    return render(request, 'tickets/displayticket.html')

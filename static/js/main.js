@@ -129,6 +129,12 @@ async function loadTableData() {
                                 .draw();
                         }
                     });
+                }); 
+                table.on('click', 'tbody tr', function () {
+                    let data = table.row(this).data();
+                
+                    console.log(data)
+                    window.open('displayticket?ticket_id=' + data['id'], 'Meldung bearbeiten', 'width=800,height=750')
                 });
             }
             );
