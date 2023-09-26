@@ -145,3 +145,8 @@ $(document).ready(function() {
     });
 });
 
+window.addEventListener("DOMContentLoaded", (event) => {
+    document.getElementById('buttonlogout').addEventListener('click', async function () {
+        localStorage.removeItem('user_id');
+    });
+});

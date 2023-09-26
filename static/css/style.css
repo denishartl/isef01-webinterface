@@ -13,7 +13,7 @@ Abschnitte im Stylesheet
 
 /* 1. Grundeinstellungen */
 
-/* {outline: 1px solid red;} */
+* {outline: 1px solid red;} 
 
 @font-face{font-family:'Lato';font-style:normal;font-weight:300;src:local('Lato Light'), local('Lato-Light'), url(https://kms-a.akamaihd.net/dc-1/5.109.67.232/public/build0/v2ui/asset/font/kU6VHbqMAZhaN_nXCmLQsQ.woff) format('woff'), url(https://kms-a.akamaihd.net/dc-1/5.109.67.232/public/build0/v2ui/asset/font/dPJ5r9gl3kK6ijoeP1IRsvY6323mHUZFJMgTvxaG2iE.woff2) format('woff2')}@font-face{font-family:'Lato';font-style:normal;font-weight:300;src:local('Lato Light'), local('Lato-Light'), url(https://kms-a.akamaihd.net/dc-1/5.109.67.232/public/build0/v2ui/asset/font/EsvMC5un3kjyUhB9ZEPPwg.woff2) format('woff2')}@font-face{font-family:'Lato';font-style:normal;font-weight:400;src:local('Lato Regular'), local('Lato-Regular'), url(https://kms-a.akamaihd.net/dc-1/5.109.67.232/public/build0/v2ui/asset/font/1bHRUMxmJHoup12DnI9XmQ.woff) format('woff'), url(https://kms-a.akamaihd.net/dc-1/5.109.67.232/public/build0/v2ui/asset/font/UyBMtLsHKBKXelqf4x7VRQ.woff2) format('woff2')}@font-face{font-family:'Lato';font-style:normal;font-weight:400;src:local('Lato Regular'), local('Lato-Regular'), url(https://kms-a.akamaihd.net/dc-1/5.109.67.232/public/build0/v2ui/asset/font/1YwB1sO8YE1Lyjf12WNiUA.woff2) format('woff2')}@font-face{font-family:'Lato';font-style:normal;font-weight:700;src:local('Lato Bold'), local('Lato-Bold'), url(https://kms-a.akamaihd.net/dc-1/5.109.67.232/public/build0/v2ui/asset/font/I1Pn3gihk5vyP0Yw5GqKsQ.woff) format('woff'), url(https://kms-a.akamaihd.net/dc-1/5.109.67.232/public/build0/v2ui/asset/font/ObQr5XYcoH0WBoUxiaYK3_Y6323mHUZFJMgTvxaG2iE.woff2) format('woff2')}@font-face{font-family:'Lato';font-style:normal;font-weight:700;src:local('Lato Bold'), local('Lato-Bold'), url(https://kms-a.akamaihd.net/dc-1/5.109.67.232/public/build0/v2ui/asset/font/H2DMvhDLycM56KNuAtbJYA.woff2) format('woff2')}
 
@@ -77,9 +77,47 @@ a[type=button] {
     text-decoration: none;
     display: inline-block;
     margin: 4px 2px;
-    cursor: pointer;
     }   
     
+a[type=buttonsend] {   
+    font-family: 'Lato';
+    font-weight: bold;
+    background-color: #7297EB;
+    border: none; 
+    border-radius: 6px;  
+    color: white;   
+    cursor: pointer; 
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    margin: 4px 2px;
+    width:100%;
+    padding-top: 5px;
+    padding-bottom: 5px;
+    }
+
+a[type=buttonclose] {   
+    font-family: 'Lato';
+    font-weight: bold;
+    background-color: #62646c;
+    border: none; 
+    border-radius: 6px;  
+    color: white;   
+    cursor: pointer; 
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    margin: 4px 2px;
+    width:100%;
+    padding-top: 5px;
+    padding-bottom: 5px;
+    }  
+    
+a[type=buttonclose]:hover {
+    background-color: #000; 
+    color:#FFF;
+}
+
 a[type=buttonfull] {   
         font-family: 'Lato';
         font-weight: bold;
@@ -93,8 +131,40 @@ a[type=buttonfull] {
         text-decoration: none;
         display: inline-block;
         margin: 4px 2px;
-        cursor: pointer;
     }   
+
+a[type=submit] {   
+    font-family: 'Lato';
+    font-weight: bold;
+    background-color: #7297EB;
+    border: none; 
+    border-radius: 6px;  
+    color: white;   
+    cursor: pointer; 
+    padding: 5px 235px;
+    text-align: center;
+    display: inline-block;
+    margin: 4px 2px;
+    width: 80;
+    } 
+    
+a[type=submit]:hover {   
+    background-color: #C3D8FF; 
+    color: #4374E4;
+    } 
+
+
+.error {
+    font-size: 1.3em;  
+    font-weight: bold;
+    color: red;
+}
+
+.success {
+    font-size: 1.3em;  
+    font-weight: bold;
+    color: green;
+}
 
 a:hover {   
     background-color: #C3D8FF; 
@@ -158,6 +228,13 @@ input[type=text], input[type=password] {
     background-color: #FFF;
     font-weight: 900;                      
  }
+
+ label[type=content]{
+    padding-left: 5px;
+    background-color: #FFF;   
+    margin-bottom: 10px;  
+    padding-bottom: 10px;                 
+ }
  
  .form-box {
     padding: 10px;
@@ -182,15 +259,21 @@ textarea {
     border-style:solid;  
 }
 
-/* 6. Tabellen */
-
-Table[type=Meldungen] {
-    font-family: 'Lato';
-    padding-top: 15px;
-    font-size: 15px;
-    width: 100%;
-    border: none;
+input[type=search-box] {
+    font-family: 'Lato'; 
+    text-align: left;
+    width: 10px;
 }
+
+.search-icon {
+    position: absolute;
+    right: 10px; /* Abstand vom rechten Rand */
+    top: 50%; /* Vertikal zentrieren */
+    transform: translateY(-50%); /* Vertikal zentrieren */
+
+}
+
+/* 6. Tabellen */
 
 Table[type=Meldungen] tr:hover {
     color: #4374E4;
