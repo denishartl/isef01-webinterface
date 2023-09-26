@@ -57,12 +57,18 @@ async function fillColumns(data) {
     return data;
 }
 
+async function getTicketsByUserID(user_id) {
+    let url = 'https://iu-isef01-functionapp.azurewebsites.net/api/getticketsbyuserid?user_id=' + user_id;
+    return fetch(url)
+        .then(response => response.json())
+        .then(responseJson => { return responseJson });
+}
+
 // Funktion zum Laden der Daten und Befüllen der Tabelle
 async function loadTableData() {
     try {
         // Befüllen der Tabelle mit Daten
-        const response = await fetch('https://iu-isef01-functionapp.azurewebsites.net/api/GetTickets?');
-        const data = await response.json();
+        var data = await getTicketsByUserID(localStorage.getItem('user_id'));
         const promises = [];
         for (let i = 0; i < data.length; i++) {
            promises.push(data[i] = await fillColumns(data[i]));
