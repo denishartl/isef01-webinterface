@@ -96,6 +96,23 @@ a[type=buttonsend] {
     padding-bottom: 5px;
     }
 
+a[type=buttonedit] {   
+    font-family: 'Lato';
+    font-weight: bold;
+    background-color: #7297EB;
+    border: none; 
+    border-radius: 6px;  
+    color: white;   
+    cursor: pointer; 
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    margin: 4px 2px;
+    width:100%;
+    padding-top: 5px;
+    padding-bottom: 5px;
+    }
+
 a[type=buttonclose] {   
     font-family: 'Lato';
     font-weight: bold;
