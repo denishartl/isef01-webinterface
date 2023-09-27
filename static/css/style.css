@@ -193,6 +193,10 @@ li[type=Navigation] {
 
 }
 
+.noresize {
+    resize: none;
+}
+
 /* 4. Inhalte */
 
 h1 {
@@ -321,4 +325,8 @@ table {
 td[type=right] {   
      text-align: right;   
  } 
+
+.tableComments {
+    display: block;
+}
 

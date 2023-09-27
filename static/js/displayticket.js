@@ -1,3 +1,15 @@
+function formatDate(inputdate) {
+    const date = new Date(inputdate);
+    const day = date.getDate().toString().padStart(2, '0');
+    const month = (date.getMonth() + 1).toString().padStart(2, '0'); 
+    const year = date.getFullYear();
+    const hours = date.getHours().toString().padStart(2, '0');
+    const minutes = date.getMinutes().toString().padStart(2, '0');
+    const seconds = date.getSeconds().toString().padStart(2, '0');
+
+    return `${day}.${month}.${year} ${hours}:${minutes}:${seconds}`;
+}
+
 async function getTicket(ticket_id) {
     let url = 'https://iu-isef01-functionapp.azurewebsites.net/api/GetTicket?id=' + ticket_id;
     return fetch(url)
@@ -21,6 +33,27 @@ async function getCourseByShortname(shortname) {
 }
 
 
+async function getComments(ticket_id) {
+    let url = 'https://iu-isef01-functionapp.azurewebsites.net/api/GetComments?ticket_id=' + ticket_id;
+    return fetch(url)
+        .then(response => response.json())
+        .then(responseJson => { return responseJson });
+}
+
+async function createComment(ticket_id, author_id, text) {
+    let url = 'https://iu-isef01-functionapp.azurewebsites.net/api/CreateComment'
+    let body = {
+        'ticket_id': ticket_id,
+        'author_id': author_id,
+        'text': text
+    }
+    return fetch(url, {
+        method: 'POST',
+        body: JSON.stringify(body)
+    })
+        .then(response => {return response});
+}
+
 async function getDocument(document_id) {
     let url = 'https://iu-isef01-functionapp.azurewebsites.net/api/GetDocument?id=' + document_id;
     return fetch(url)
@@ -42,6 +75,13 @@ async function getDocumentFromLocalStorageCourses(document_title) {
             return all_documents[i]
         }
     }
+}
+
+async function getUser(user_id) {
+    let url = 'https://iu-isef01-functionapp.azurewebsites.net/api/GetUser?user_id=' + user_id;
+    return fetch(url)
+        .then(response => response.json())
+        .then(responseJson => { return responseJson });
 }
 
 async function addOptionSelect(select_id, value) {
@@ -71,6 +111,21 @@ async function updateTicket(ticket_id, author_id, course_id, document_id, ticket
         body: JSON.stringify(body)
     })
         .then(response => {return response});
+}
+
+async function printComments(ticket_id) {
+    document.getElementById('tableCommentsDiv').hidden = true;
+    document.getElementById('tableComments').innerHTML = null;
+    var comments = await getComments(ticket_id)
+    for (var i = 0; i < comments.length; i++) {
+        var user = await getUser(comments[i]['author'])
+        var innerHTML = '<tr class="tableComments">\n' +
+        '<td class="tableComments">' + user['surname'] + ' ' + user['lastname'] + ', ' + formatDate(comments[i]['createdAt']) + '</td>\n' +
+        '<td class="tableComments">' + comments[i]['text'] + '</td>\n' +
+        '</tr>\n'
+    document.getElementById('tableComments').innerHTML += innerHTML;
+    }
+    document.getElementById('tableCommentsDiv').hidden = false;
 }
 
 function printError(message) {
@@ -197,6 +252,26 @@ document.getElementById('buttonsend').addEventListener('click', async function (
     }
 });
 
+
+document.getElementById('buttonsendcomment').addEventListener('click', async function () {
+    document.getElementById('error').hidden = true;
+    document.getElementById('success').hidden = true;
+    if (document.getElementById('textAreaComment').value != "") {
+        const urlParams = new URLSearchParams(window.location.search);
+        const ticket_id = urlParams.get('ticket_id');
+        await createComment(
+            ticket_id,
+            localStorage.getItem('user_id'),
+            document.getElementById('textAreaComment').value
+        )
+        document.getElementById('textAreaComment').value = null;
+        printComments(ticket_id);
+    }
+    else {
+        printError('Bitte Kommentar eingeben!')
+    }
+});
+
 // Formular beim Laden der Seite mit den Inhalten aus dem Ticket befüllen
 async function init() {
     const urlParams = new URLSearchParams(window.location.search);
@@ -211,6 +286,8 @@ async function init() {
     document.getElementById('selectedDocument').value = document_content['title']
     document.getElementById('tickettype').value = ticket_content['ticket_type']
     document.getElementById('description').innerHTML = ticket_content['description']
+    document.getElementById('dropDownTicketStatus').Value = ticket_content['status']
+    printComments(ticket_id)
 }
 
 init();
