@@ -11,7 +11,7 @@ function formatDate(inputdate) {
 }
 
 async function getTicket(ticket_id) {
-    let url = 'https://iu-isef01-functionapp.azurewebsites.net/api/GetTicket?id=' + ticket_id;
+    let url = 'https://iu-isef01-functionapp2.azurewebsites.net/api/GetTicket?id=' + ticket_id;
     return fetch(url)
         .then(response => response.json())
         .then(responseJson => { return responseJson });
@@ -19,14 +19,14 @@ async function getTicket(ticket_id) {
 
 
 async function getCourse(course_id) {
-    let url = 'https://iu-isef01-functionapp.azurewebsites.net/api/GetCourse?id=' + course_id;
+    let url = 'https://iu-isef01-functionapp2.azurewebsites.net/api/GetCourse?id=' + course_id;
     return fetch(url)
         .then(response => response.json())
         .then(responseJson => { return responseJson });
 }
 
 async function getCourseByShortname(shortname) {
-    let url = 'https://iu-isef01-functionapp.azurewebsites.net/api/GetCourseByShortname?shortname=' + shortname;
+    let url = 'https://iu-isef01-functionapp2.azurewebsites.net/api/GetCourseByShortname?shortname=' + shortname;
     return fetch(url)
         .then(response => response.json())
         .then(responseJson => { return responseJson });
@@ -34,14 +34,14 @@ async function getCourseByShortname(shortname) {
 
 
 async function getComments(ticket_id) {
-    let url = 'https://iu-isef01-functionapp.azurewebsites.net/api/GetComments?ticket_id=' + ticket_id;
+    let url = 'https://iu-isef01-functionapp2.azurewebsites.net/api/GetComments?ticket_id=' + ticket_id;
     return fetch(url)
         .then(response => response.json())
         .then(responseJson => { return responseJson });
 }
 
 async function createComment(ticket_id, author_id, text) {
-    let url = 'https://iu-isef01-functionapp.azurewebsites.net/api/CreateComment'
+    let url = 'https://iu-isef01-functionapp2.azurewebsites.net/api/CreateComment'
     let body = {
         'ticket_id': ticket_id,
         'author_id': author_id,
@@ -55,14 +55,14 @@ async function createComment(ticket_id, author_id, text) {
 }
 
 async function getDocument(document_id) {
-    let url = 'https://iu-isef01-functionapp.azurewebsites.net/api/GetDocument?id=' + document_id;
+    let url = 'https://iu-isef01-functionapp2.azurewebsites.net/api/GetDocument?id=' + document_id;
     return fetch(url)
         .then(response => response.json())
         .then(responseJson => { return responseJson });
 }
 
 async function getDocumentsByCourse(course_id) {
-    let url = 'https://iu-isef01-functionapp.azurewebsites.net/api/GetDocumentsByCourse?course=' + course_id;
+    let url = 'https://iu-isef01-functionapp2.azurewebsites.net/api/GetDocumentsByCourse?course=' + course_id;
     return fetch(url)
         .then(response => response.json())
         .then(responseJson => { return responseJson });
@@ -78,10 +78,21 @@ async function getDocumentFromLocalStorageCourses(document_title) {
 }
 
 async function getUser(user_id) {
-    let url = 'https://iu-isef01-functionapp.azurewebsites.net/api/GetUser?user_id=' + user_id;
+    let url = 'https://iu-isef01-functionapp2.azurewebsites.net/api/GetUser?user_id=' + user_id;
     return fetch(url)
         .then(response => response.json())
         .then(responseJson => { return responseJson });
+}
+
+async function getUsersbyRole(role) {
+    let url = 'https://iu-isef01-functionapp2.azurewebsites.net/api/GetUsersByRole?role=' + role;
+    return fetch(url)
+        .then(response => response.json())
+        .then(responseJson => { return responseJson });
+}
+
+function formatUserDisplayName(user) {
+    return user['surname'] + ' ' + user['lastname']
 }
 
 async function addOptionSelect(select_id, value) {
@@ -90,21 +101,28 @@ async function addOptionSelect(select_id, value) {
 }
 
 
+async function addOptionSelectWithDifferentValue(select_id, value, display) {
+    var option_html = '<option value="' + value + '">' + display + '</option>'
+    document.getElementById(select_id).insertAdjacentHTML('beforeend', option_html)
+}
+
 async function getAllCourses() {
-    let url = 'https://iu-isef01-functionapp.azurewebsites.net/api/GetCourses';
+    let url = 'https://iu-isef01-functionapp2.azurewebsites.net/api/GetCourses';
     return fetch(url)
         .then(response => response.json())
         .then(responseJson => { return responseJson });
 }
 
-async function updateTicket(ticket_id, author_id, course_id, document_id, ticket_type, description) {
-    let url = 'https://iu-isef01-functionapp.azurewebsites.net/api/UpdateTicket?ticket_id=' + ticket_id
+async function updateTicket(ticket_id, author_id, course_id, document_id, ticket_type, description, ticket_status, assignee) {
+    let url = 'https://iu-isef01-functionapp2.azurewebsites.net/api/UpdateTicket?ticket_id=' + ticket_id
     let body = {
         'author_id': author_id,
         'course_id': course_id,
         'document_id': document_id,
         'ticket_type': ticket_type,
-        'description': description
+        'description': description,
+        'status': ticket_status,
+        'assignee': assignee
     }
     return fetch(url, {
         method: 'POST',
@@ -114,18 +132,16 @@ async function updateTicket(ticket_id, author_id, course_id, document_id, ticket
 }
 
 async function printComments(ticket_id) {
-    document.getElementById('tableCommentsDiv').hidden = true;
     document.getElementById('tableComments').innerHTML = null;
     var comments = await getComments(ticket_id)
     for (var i = 0; i < comments.length; i++) {
         var user = await getUser(comments[i]['author'])
         var innerHTML = '<tr class="tableComments">\n' +
-        '<td class="tableComments">' + user['surname'] + ' ' + user['lastname'] + ', ' + formatDate(comments[i]['createdAt']) + '</td>\n' +
+        '<td class="tableComments">' + formatUserDisplayName(user) + ', ' + formatDate(comments[i]['createdAt']) + '</td>\n' +
         '<td class="tableComments">' + comments[i]['text'] + '</td>\n' +
         '</tr>\n'
     document.getElementById('tableComments').innerHTML += innerHTML;
     }
-    document.getElementById('tableCommentsDiv').hidden = false;
 }
 
 function printError(message) {
@@ -139,18 +155,50 @@ function printSuccess(message) {
 }
 
 document.getElementById('buttonedit').addEventListener('click', async function () {
-    var all_courses = await getAllCourses();
-    addOptionSelect('dynamicDropdownCourse', " ")
-    for (var i = 0; i < all_courses.length; i++) {
-        addOptionSelect('dynamicDropdownCourse', all_courses[i].shortname)
-    };
-    document.getElementById('dynamicDropdownCourse').disabled = false;
-    document.getElementById('documenttype').disabled = false;
-    document.getElementById('selectedDocument').disabled = false;
-    document.getElementById('tickettype').disabled = false;
-    document.getElementById('description').disabled = false;
-    document.getElementById('buttonedittd').hidden = true;
-    document.getElementById('buttonsendtd').hidden = false;
+    current_user = await getUser(localStorage.getItem('user_id'));
+    if ((current_user['role']).toUpperCase() == 'USER') {
+        if ((document.getElementById('dropDownTicketStatus').value).toUpperCase() == 'NEU') {
+            var all_courses = await getAllCourses();
+            addOptionSelect('dynamicDropdownCourse', " ")
+            for (var i = 0; i < all_courses.length; i++) {
+                addOptionSelect('dynamicDropdownCourse', all_courses[i].shortname)
+            };
+            document.getElementById('dynamicDropdownCourse').disabled = false;
+            document.getElementById('documenttype').disabled = false;
+            document.getElementById('selectedDocument').disabled = false;
+            document.getElementById('tickettype').disabled = false;
+            document.getElementById('description').disabled = false;
+            document.getElementById('buttonedittd').hidden = true;
+            document.getElementById('buttonsendtd').hidden = false;
+        }
+        else {
+            printError('Das Ticket ist schon in Bearbeitung, Anpassung nicht möglich!')
+        }
+    }
+    else if ((current_user['role']).toUpperCase() == 'BEARBEITER') {
+        var all_users = await getUsersbyRole('Bearbeiter')
+        for (var i = 0; i < all_users.length; i++) {
+            if (all_users[i]['id'] != document.getElementById('dropDownAssignee').value) {
+                await addOptionSelectWithDifferentValue('dropDownAssignee', all_users[i]['id'], formatUserDisplayName(all_users[i]))
+            }
+        };
+        document.getElementById('dropDownTicketStatus').disabled = false;
+        document.getElementById('dropDownAssignee').disabled = false;
+        document.getElementById('buttonedittd').hidden = true;
+        document.getElementById('buttonsendtd').hidden = false;
+        console.log(document.getElementById('dropDownAssignee').value);
+        // Immer nur untere Inhalte (Status und Bearbeiter) zum Anpassen
+    // Dropdown für Bearbeiter einbauen -> Alle User, die Rolle Bearbeiter haben
+    // Wenn Status Neu -> Optionen für "In Bearbeitung" oder "Nicht Umsetzbar"
+    // Wenn Status In Bearbeitung -> Optionen "Änderung umgesetzt" oder "Nicht Umsetzbar"
+    }
+
+
+    // Wenn normaler User angemeldet ist und Bearbeiten klickt:
+
+    // Wenn Bearbeiter angemeldet ist und Bearbeiten klick:
+    
+    
 });
 
 document.getElementById('documenttype').addEventListener('change', async function () {
@@ -194,13 +242,16 @@ document.getElementById('buttonsend').addEventListener('click', async function (
                         var success = 0;
                         const urlParams = new URLSearchParams(window.location.search);
                         const open_ticket_id = urlParams.get('ticket_id');
+                        console.log(document.getElementById('dropDownAssignee').value)
                         response_ticket = await updateTicket(
                             ticket_id = open_ticket_id,
                             author_id = localStorage.getItem('user_id'),
                             course_id = localStorage.getItem('course_id'),
                             document_id = localStorage.getItem('document_id'),
                             ticket_type = document.getElementById('tickettype').value,
-                            description = document.getElementById('description').value
+                            description = document.getElementById('description').value,
+                            ticket_status = document.getElementById('dropDownTicketStatus').value,
+                            assignee = document.getElementById('dropDownAssignee').value
                         );
                         if (response_ticket.status != 200) {
                             success = -1;
@@ -227,6 +278,8 @@ document.getElementById('buttonsend').addEventListener('click', async function (
                             document.getElementById('selectedDocument').disabled = true;
                             document.getElementById('tickettype').disabled = true;
                             document.getElementById('description').disabled = true;
+                            document.getElementById('dropDownTicketStatus').disabled = true;
+                            document.getElementById('dropDownAssignee').disabled = true;
                             document.getElementById('buttonedittd').hidden = false;
                             document.getElementById('buttonsendtd').hidden = true;
                         } 
@@ -286,7 +339,18 @@ async function init() {
     document.getElementById('selectedDocument').value = document_content['title']
     document.getElementById('tickettype').value = ticket_content['ticket_type']
     document.getElementById('description').innerHTML = ticket_content['description']
-    document.getElementById('dropDownTicketStatus').Value = ticket_content['status']
+    console.log(ticket_content['assignee'])
+    if (ticket_content['assignee'] != null) {
+        await addOptionSelectWithDifferentValue('dropDownAssignee', ticket_content['assignee'], formatUserDisplayName(await getUser(ticket_content['assignee'])))
+        document.getElementById('dropDownAssignee').value = ticket_content['assignee']
+    }
+    else {
+        await addOptionSelectWithDifferentValue('dropDownAssignee', null, "Noch nicht zugewiesen")
+        document.getElementById('dropDownAssignee').value = null
+    }
+    
+    document.getElementById('dropDownTicketStatus').value = ticket_content['status']
+    console.log(ticket_content)
     printComments(ticket_id)
 }
 

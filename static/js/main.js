@@ -14,7 +14,7 @@ function formatCreatedAtDate(createdAt) {
 // Funktion zum Abrufen des Dokumentennamens anhand der ID
 async function getDocumentTitleById(id) {
     try {
-        const response = await fetch(`https://iu-isef01-functionapp.azurewebsites.net/api/GetDocument?id=${id}`);
+        const response = await fetch(`https://iu-isef01-functionapp2.azurewebsites.net/api/GetDocument?id=${id}`);
         const data = await response.json();
         return data.title;
     } catch (error) {
@@ -26,7 +26,7 @@ async function getDocumentTitleById(id) {
 // Funktion zum Abrufen der Dokumentenart anhand der ID
 async function getDocumentTypeById(id) {
     try {
-        const response = await fetch(`https://iu-isef01-functionapp.azurewebsites.net/api/GetDocument?id=${id}`);
+        const response = await fetch(`https://iu-isef01-functionapp2.azurewebsites.net/api/GetDocument?id=${id}`);
         const data = await response.json();
         return data.doctype;
     } catch (error) {
@@ -38,7 +38,7 @@ async function getDocumentTypeById(id) {
 // Funktion zum Abrufen des Kursnamens anhand der ID
 async function getCourseNameById(id) {
     try {
-        const response = await fetch(`https://iu-isef01-functionapp.azurewebsites.net/api/GetCourse?id=${id}`);
+        const response = await fetch(`https://iu-isef01-functionapp2.azurewebsites.net/api/GetCourse?id=${id}`);
         const data = await response.json();
         return data.shortname;
     } catch (error) {
@@ -58,7 +58,7 @@ async function fillColumns(data) {
 }
 
 async function getTicketsByUserID(user_id) {
-    let url = 'https://iu-isef01-functionapp.azurewebsites.net/api/getticketsbyuserid?user_id=' + user_id;
+    let url = 'https://iu-isef01-functionapp2.azurewebsites.net/api/getticketsbyuserid?user_id=' + user_id;
     return fetch(url)
         .then(response => response.json())
         .then(responseJson => { return responseJson });

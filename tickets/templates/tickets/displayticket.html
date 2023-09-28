@@ -84,15 +84,16 @@
 
             <div type="ticketinformation">
                 <div type="Meldung">
-                    <label type="description" for="textAreaAsignee">Bearbeiter</label>
-                    <textarea name="textAreaAsignee" id="textAreaAsignee" required cols="50" rows="1" disabled="true"
-                        class="noresize"></textarea>
+                    <label type="description" for="dropDownAssignee">Bearbeiter</label>
+                    <select id="dropDownAssignee" class="js-example-basic-single" type="ticket" disabled="true"
+                        name="dropDownAssignee" required>
+                    </select>
                 </div>
 
                 <div type="Meldung">
                     <label type="description" for="dropDownTicketStatus">Status</label>
-                    <select id="dropDownTicketStatus" class="js-example-basic-single" type="ticket"
-                        name="dropDownTicketStatus" disabled="true" required>
+                    <select id="dropDownTicketStatus" class="js-example-basic-single" type="ticket" disabled="true"
+                        name="dropDownTicketStatus" required>
                         <option value="Neu">Neu</option>
                         <option value="In Bearbeitung">In Bearbeitung</option>
                         <option value="Änderung umgesetzt">Änderung Umgesetzt</option>
@@ -100,15 +101,15 @@
                     </select>
                 </div>
 
-                <div type="Meldung" id="tableCommentsDiv" >
-                    <label type="description" for="tableComments">Kommentare</label>
-                    <table type="username" id="tableComments">
-                        <tr class="tableComments">
-                        </tr>
-                    </table>
-                    <textarea name="textAreaComment" id="textAreaComment" required cols="50" rows="4"></textarea>
-                    <td ><a type="buttonsend" value="Submit" id="buttonsendcomment">Kommentar absenden</a> </td>
-                </div>
+
+                <label type="description" for="tableComments">Kommentare</label>
+                <table type="username" id="tableComments">
+                    <tr class="tableComments">
+                    </tr>
+                </table>
+
+                <textarea name="textAreaComment" id="textAreaComment" required cols="50" rows="4"></textarea>
+                <td><a type="buttonsend" value="Submit" id="buttonsendcomment">Kommentar absenden</a> </td>
             </div>
 
 
@@ -118,8 +119,10 @@
             </form>
             <table type="username">
                 <tr>
-                    <td hidden id="buttonsendtd"><a type="buttonsend" form="form" value="Submit" id="buttonsend">Absenden</a> </td>
-                    <td id="buttonedittd"><a type="buttonedit" form="form" value="Submit" id="buttonedit">Bearbeiten</a></td>
+                    <td hidden id="buttonsendtd"><a type="buttonsend" form="form" value="Submit"
+                            id="buttonsend">Absenden</a> </td>
+                    <td id="buttonedittd"><a type="buttonedit" form="form" value="Submit" id="buttonedit">Bearbeiten</a>
+                    </td>
                     <td><a type="buttonclose" onclick="window.close();">Abbrechen</a></td>
                 </tr>
             </table>
