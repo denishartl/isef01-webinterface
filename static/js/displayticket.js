@@ -106,6 +106,11 @@ async function addOptionSelectWithDifferentValue(select_id, value, display) {
     document.getElementById(select_id).insertAdjacentHTML('beforeend', option_html)
 }
 
+async function addOptionSelectWithDifferentValueAndClass(select_id, value, display, optionclass) {
+    var option_html = '<option class="' + optionclass + '" value="' + value + '">' + display + '</option>'
+    document.getElementById(select_id).insertAdjacentHTML('beforeend', option_html)
+}
+
 async function getAllCourses() {
     let url = 'https://iu-isef01-functionapp2.azurewebsites.net/api/GetCourses';
     return fetch(url)
@@ -176,10 +181,15 @@ document.getElementById('buttonedit').addEventListener('click', async function (
         }
     }
     else if ((current_user['role']).toUpperCase() == 'BEARBEITER') {
+        var existing_options = document.getElementsByClassName('assignee')
+        var existing_options_list = []
+        for (var i = 0; i < existing_options.length; i++) {
+            existing_options_list.push(existing_options[i]['value'])
+        }
         var all_users = await getUsersbyRole('Bearbeiter')
         for (var i = 0; i < all_users.length; i++) {
-            if (all_users[i]['id'] != document.getElementById('dropDownAssignee').value) {
-                await addOptionSelectWithDifferentValue('dropDownAssignee', all_users[i]['id'], formatUserDisplayName(all_users[i]))
+            if (!existing_options_list.includes(all_users[i]['id'])) {
+                await addOptionSelectWithDifferentValueAndClass('dropDownAssignee', all_users[i]['id'], formatUserDisplayName(all_users[i]), "assignee")
             }
         };
         document.getElementById('dropDownTicketStatus').disabled = false;
@@ -187,18 +197,9 @@ document.getElementById('buttonedit').addEventListener('click', async function (
         document.getElementById('buttonedittd').hidden = true;
         document.getElementById('buttonsendtd').hidden = false;
         console.log(document.getElementById('dropDownAssignee').value);
-        // Immer nur untere Inhalte (Status und Bearbeiter) zum Anpassen
-    // Dropdown für Bearbeiter einbauen -> Alle User, die Rolle Bearbeiter haben
     // Wenn Status Neu -> Optionen für "In Bearbeitung" oder "Nicht Umsetzbar"
     // Wenn Status In Bearbeitung -> Optionen "Änderung umgesetzt" oder "Nicht Umsetzbar"
-    }
-
-
-    // Wenn normaler User angemeldet ist und Bearbeiten klickt:
-
-    // Wenn Bearbeiter angemeldet ist und Bearbeiten klick:
-    
-    
+    } 
 });
 
 document.getElementById('documenttype').addEventListener('change', async function () {
@@ -341,7 +342,7 @@ async function init() {
     document.getElementById('description').innerHTML = ticket_content['description']
     console.log(ticket_content['assignee'])
     if (ticket_content['assignee'] != null) {
-        await addOptionSelectWithDifferentValue('dropDownAssignee', ticket_content['assignee'], formatUserDisplayName(await getUser(ticket_content['assignee'])))
+        await addOptionSelectWithDifferentValueAndClass('dropDownAssignee', ticket_content['assignee'], formatUserDisplayName(await getUser(ticket_content['assignee'])), 'assignee')
         document.getElementById('dropDownAssignee').value = ticket_content['assignee']
     }
     else {
