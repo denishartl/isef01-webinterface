@@ -8,6 +8,7 @@
     <link href="https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.13/css/select2.min.css" rel="stylesheet" />
     <script src="https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.13/js/select2.min.js"></script>
     <link href="{% static 'css/style.css' %}" rel="stylesheet" type='text/css'>
+    
 </head>
 
 
@@ -37,7 +38,7 @@
                     <div type="Meldung">
                         <label type="description" for="documenttype">Dokumentenart</label>
                         <div class="select">
-                            <select type="ticket" name="documenttype" id="documenttype" disabled="true" required>
+                            <select type="ticket" name="documenttype" id="documenttype" disabled="true">
                                 <option hidden> </option>
                                 <option value="Fragen">Fragen</option>
                                 <option value="Literaturangaben">Literaturangaben</option>
@@ -72,14 +73,21 @@
 
                     <div type="Meldung">
                         <label type="description" for="description">Beschreibung</label>
-                        <textarea name="description" id="description" required cols="50" rows="4"
+                        <textarea name="description" id="description" cols="50" rows="4"
                             disabled="true"></textarea>
                     </div>
 
-                    <div type="Meldung"></div>
+                    <div type="Meldung">
                     <label for="attachment"> </label>
                     <input type="file" id="attachment" name="attachment" accept="image/png, image/jpeg, .pdf"
                         disabled="true">
+                    </div>
+
+                    <div type="Meldung" id="divAttachments" hidden>
+                        <label type="description" for="tableAttachments">Anhänge</label>
+                        <table type="username" id="tableAttachments">
+                        </table>
+                    </div>
             </div>
 
             <div type="ticketinformation">
@@ -108,7 +116,7 @@
                     </tr>
                 </table>
 
-                <textarea name="textAreaComment" id="textAreaComment" required cols="50" rows="4"></textarea>
+                <textarea name="textAreaComment" id="textAreaComment" cols="50" rows="4"></textarea>
                 <td><a type="buttonsend" value="Submit" id="buttonsendcomment">Kommentar absenden</a> </td>
             </div>
 

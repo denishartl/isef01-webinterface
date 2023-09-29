@@ -1,7 +1,7 @@
 function formatDate(inputdate) {
     const date = new Date(inputdate);
     const day = date.getDate().toString().padStart(2, '0');
-    const month = (date.getMonth() + 1).toString().padStart(2, '0'); 
+    const month = (date.getMonth() + 1).toString().padStart(2, '0');
     const year = date.getFullYear();
     const hours = date.getHours().toString().padStart(2, '0');
     const minutes = date.getMinutes().toString().padStart(2, '0');
@@ -9,6 +9,55 @@ function formatDate(inputdate) {
 
     return `${day}.${month}.${year} ${hours}:${minutes}:${seconds}`;
 }
+
+async function getAttachments(ticket_id) {
+    let url = 'https://iu-isef01-functionapp2.azurewebsites.net/api/GetAttachments?ticket_id=' + ticket_id;
+    return fetch(url)
+        .then(response => response.json())
+        .then(responseJson => { return responseJson });
+}
+
+async function createAttachment(ticket_id, filename, file_b64) {
+    let url = 'https://iu-isef01-functionapp2.azurewebsites.net/api/CreateAttachment?name=' + filename + '&ticket_id=' + ticket_id;
+    let body = {
+        'file': file_b64
+    }
+    return fetch(url, {
+        method: 'POST',
+        body: JSON.stringify(body)
+    })
+        .then(response => {return response});
+}
+
+
+async function deleteAttachment(attachment_id) {
+    let url = 'https://iu-isef01-functionapp2.azurewebsites.net/api/DeleteAttachment?attachment_id=' + attachment_id;
+    await fetch(url, {
+        method: 'DELETE'
+    });
+    const urlParams = new URLSearchParams(window.location.search);
+    const ticket_id = urlParams.get('ticket_id');
+    printAttachments(ticket_id)
+}
+
+async function printAttachments(ticket_id) {
+    document.getElementById('divAttachments').hidden = true;
+    document.getElementById('tableAttachments').innerHTML = null;
+    var all_attachments = await getAttachments(ticket_id)
+    if (all_attachments.length > 0) {
+        for (var i = 0; i < all_attachments.length; i++){
+            var innerHTML = '<tr class="tableAttachments">\n' +
+            '<td class="tableAttachments">' + all_attachments[i]['name'] +'</td>\n' +
+            '<td class="tableAttachments"><a download="' + all_attachments[i]['name'] + '" href="' + all_attachments[i]['blob_link'] + '">Click here to Download</a></td>\n' +
+            '<td class="tableAttachments"><a onclick="deleteAttachment(\'' + all_attachments[i]['id'] + '\')">Löschen</a></td>\n' +
+            '</tr>\n'
+            document.getElementById('tableAttachments').innerHTML += innerHTML;
+        }
+        document.getElementById('divAttachments').hidden = false;
+    }
+}
+
+
 
 async function getTicket(ticket_id) {
     let url = 'https://iu-isef01-functionapp2.azurewebsites.net/api/GetTicket?id=' + ticket_id;
@@ -51,7 +100,7 @@ async function createComment(ticket_id, author_id, text) {
         method: 'POST',
         body: JSON.stringify(body)
     })
-        .then(response => {return response});
+        .then(response => { return response });
 }
 
 async function getDocument(document_id) {
@@ -133,7 +182,7 @@ async function updateTicket(ticket_id, author_id, course_id, document_id, ticket
         method: 'POST',
         body: JSON.stringify(body)
     })
-        .then(response => {return response});
+        .then(response => { return response });
 }
 
 async function printComments(ticket_id) {
@@ -142,10 +191,10 @@ async function printComments(ticket_id) {
     for (var i = 0; i < comments.length; i++) {
         var user = await getUser(comments[i]['author'])
         var innerHTML = '<tr class="tableComments">\n' +
-        '<td class="tableComments">' + formatUserDisplayName(user) + ', ' + formatDate(comments[i]['createdAt']) + '</td>\n' +
-        '<td class="tableComments">' + comments[i]['text'] + '</td>\n' +
-        '</tr>\n'
-    document.getElementById('tableComments').innerHTML += innerHTML;
+            '<td class="tableComments">' + formatUserDisplayName(user) + ', ' + formatDate(comments[i]['createdAt']) + '</td>\n' +
+            '<td class="tableComments">' + comments[i]['text'] + '</td>\n' +
+            '</tr>\n'
+        document.getElementById('tableComments').innerHTML += innerHTML;
     }
 }
 
@@ -158,6 +207,23 @@ function printSuccess(message) {
     document.getElementById('success').innerHTML = message;
     document.getElementById('success').hidden = false;
 }
+
+document.getElementById('attachment').addEventListener('change', async function () {
+    document.getElementById('error').hidden = true;
+    const reader = new FileReader();
+    const selectedFile = document.getElementById("attachment").files[0];
+    if (selectedFile.size < 4000000) {
+        reader.readAsDataURL(selectedFile);
+        reader.onload = function(e) {
+            localStorage.setItem('attachment_name', selectedFile.name);
+            localStorage.setItem('attachment_b64', reader.result.replace(/^.+?;base64,/, ''))
+        };
+    }
+    else {
+        printError('Uploads dürfen max. 4MB groß sein!')
+    }
+    
+});
 
 document.getElementById('buttonedit').addEventListener('click', async function () {
     current_user = await getUser(localStorage.getItem('user_id'));
@@ -173,6 +239,7 @@ document.getElementById('buttonedit').addEventListener('click', async function (
             document.getElementById('selectedDocument').disabled = false;
             document.getElementById('tickettype').disabled = false;
             document.getElementById('description').disabled = false;
+            document.getElementById('attachment').disabled = false;
             document.getElementById('buttonedittd').hidden = true;
             document.getElementById('buttonsendtd').hidden = false;
         }
@@ -197,9 +264,9 @@ document.getElementById('buttonedit').addEventListener('click', async function (
         document.getElementById('buttonedittd').hidden = true;
         document.getElementById('buttonsendtd').hidden = false;
         console.log(document.getElementById('dropDownAssignee').value);
-    // Wenn Status Neu -> Optionen für "In Bearbeitung" oder "Nicht Umsetzbar"
-    // Wenn Status In Bearbeitung -> Optionen "Änderung umgesetzt" oder "Nicht Umsetzbar"
-    } 
+        // Wenn Status Neu -> Optionen für "In Bearbeitung" oder "Nicht Umsetzbar"
+        // Wenn Status In Bearbeitung -> Optionen "Änderung umgesetzt" oder "Nicht Umsetzbar"
+    }
 });
 
 document.getElementById('documenttype').addEventListener('change', async function () {
@@ -217,7 +284,7 @@ document.getElementById('documenttype').addEventListener('change', async functio
 });
 
 
-document.getElementById('dynamicDropdownCourse').addEventListener('change', async function() {
+document.getElementById('dynamicDropdownCourse').addEventListener('change', async function () {
     var selected_course_shortname = document.getElementById('dynamicDropdownCourse').value;
     var course = await getCourseByShortname(selected_course_shortname);
     localStorage.setItem('course_id', course.id);
@@ -227,7 +294,7 @@ document.getElementById('dynamicDropdownCourse').addEventListener('change', asyn
     document.getElementById('documenttype').dispatchEvent(new Event("change"));
 })
 
-document.getElementById('selectedDocument').addEventListener('change', async function() {
+document.getElementById('selectedDocument').addEventListener('change', async function () {
     var course_document = await getDocumentFromLocalStorageCourses(document.getElementById('selectedDocument').value);
     localStorage.setItem('document_id', course_document.id);
 })
@@ -239,7 +306,7 @@ document.getElementById('buttonsend').addEventListener('click', async function (
         if (document.getElementById('documenttype').value != "") {
             if (document.getElementById('selectedDocument').value != "") {
                 if (document.getElementById('tickettype').value != "") {
-                    if (document.getElementById('description').value != ""){
+                    if (document.getElementById('description').value != "") {
                         var success = 0;
                         const urlParams = new URLSearchParams(window.location.search);
                         const open_ticket_id = urlParams.get('ticket_id');
@@ -283,7 +350,8 @@ document.getElementById('buttonsend').addEventListener('click', async function (
                             document.getElementById('dropDownAssignee').disabled = true;
                             document.getElementById('buttonedittd').hidden = false;
                             document.getElementById('buttonsendtd').hidden = true;
-                        } 
+                            printAttachments(ticket_id);
+                        }
                     }
                     else {
                         printError("Bitte Beschreibung ausfüllen!")
@@ -340,7 +408,9 @@ async function init() {
     document.getElementById('selectedDocument').value = document_content['title']
     document.getElementById('tickettype').value = ticket_content['ticket_type']
     document.getElementById('description').innerHTML = ticket_content['description']
-    console.log(ticket_content['assignee'])
+    // Attachments
+    printAttachments (ticket_id)
+    // Assginee
     if (ticket_content['assignee'] != null) {
         await addOptionSelectWithDifferentValueAndClass('dropDownAssignee', ticket_content['assignee'], formatUserDisplayName(await getUser(ticket_content['assignee'])), 'assignee')
         document.getElementById('dropDownAssignee').value = ticket_content['assignee']
@@ -349,10 +419,16 @@ async function init() {
         await addOptionSelectWithDifferentValue('dropDownAssignee', null, "Noch nicht zugewiesen")
         document.getElementById('dropDownAssignee').value = null
     }
-    
+    // Status
     document.getElementById('dropDownTicketStatus').value = ticket_content['status']
-    console.log(ticket_content)
+    // Comments
     printComments(ticket_id)
 }
 
 init();
+
+
+/*
+Wenn es Anhänge gibt:
+- Button zum Hochladen der Anhänge unabhängig vom Absenden/Bearbeiten Button machen (Dann auch bei Plugin und createticket)
+*/
