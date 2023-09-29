@@ -26,7 +26,7 @@ async function createAttachment(ticket_id, filename, file_b64) {
         method: 'POST',
         body: JSON.stringify(body)
     })
-        .then(response => {return response});
+        .then(response => { return response });
 }
 
 
@@ -45,12 +45,12 @@ async function printAttachments(ticket_id) {
     document.getElementById('tableAttachments').innerHTML = null;
     var all_attachments = await getAttachments(ticket_id)
     if (all_attachments.length > 0) {
-        for (var i = 0; i < all_attachments.length; i++){
+        for (var i = 0; i < all_attachments.length; i++) {
             var innerHTML = '<tr class="tableAttachments">\n' +
-            '<td class="tableAttachments">' + all_attachments[i]['name'] +'</td>\n' +
-            '<td class="tableAttachments"><a download="' + all_attachments[i]['name'] + '" href="' + all_attachments[i]['blob_link'] + '">Click here to Download</a></td>\n' +
-            '<td class="tableAttachments"><a onclick="deleteAttachment(\'' + all_attachments[i]['id'] + '\')">Löschen</a></td>\n' +
-            '</tr>\n'
+                '<td class="tableAttachments">' + all_attachments[i]['name'] + '</td>\n' +
+                '<td class="tableAttachments"><a download="' + all_attachments[i]['name'] + '" href="' + all_attachments[i]['blob_link'] + '">Click here to Download</a></td>\n' +
+                '<td class="tableAttachments"><a onclick="deleteAttachment(\'' + all_attachments[i]['id'] + '\')">Löschen</a></td>\n' +
+                '</tr>\n'
             document.getElementById('tableAttachments').innerHTML += innerHTML;
         }
         document.getElementById('divAttachments').hidden = false;
@@ -214,7 +214,7 @@ document.getElementById('attachment').addEventListener('change', async function 
     const selectedFile = document.getElementById("attachment").files[0];
     if (selectedFile.size < 4000000) {
         reader.readAsDataURL(selectedFile);
-        reader.onload = function(e) {
+        reader.onload = function (e) {
             localStorage.setItem('attachment_name', selectedFile.name);
             localStorage.setItem('attachment_b64', reader.result.replace(/^.+?;base64,/, ''))
         };
@@ -222,7 +222,7 @@ document.getElementById('attachment').addEventListener('change', async function 
     else {
         printError('Uploads dürfen max. 4MB groß sein!')
     }
-    
+
 });
 
 document.getElementById('buttonedit').addEventListener('click', async function () {
@@ -264,8 +264,8 @@ document.getElementById('buttonedit').addEventListener('click', async function (
         document.getElementById('buttonedittd').hidden = true;
         document.getElementById('buttonsendtd').hidden = false;
         console.log(document.getElementById('dropDownAssignee').value);
-        // Wenn Status Neu -> Optionen für "In Bearbeitung" oder "Nicht Umsetzbar"
-        // Wenn Status In Bearbeitung -> Optionen "Änderung umgesetzt" oder "Nicht Umsetzbar"
+        // If status "Neu" -> Option for "In Bearbeitung" or "Nicht umsetzbar"
+        // If status "In Bearbeitung" -> Option for "Änderung umgesetzt" or "Nicht Umsetzbar"
     }
 });
 
@@ -394,7 +394,7 @@ document.getElementById('buttonsendcomment').addEventListener('click', async fun
     }
 });
 
-// Formular beim Laden der Seite mit den Inhalten aus dem Ticket befüllen
+// Fill the form with the content from the ticket when the page is loading
 async function init() {
     const urlParams = new URLSearchParams(window.location.search);
     const ticket_id = urlParams.get('ticket_id');
@@ -409,7 +409,7 @@ async function init() {
     document.getElementById('tickettype').value = ticket_content['ticket_type']
     document.getElementById('description').innerHTML = ticket_content['description']
     // Attachments
-    printAttachments (ticket_id)
+    printAttachments(ticket_id)
     // Assginee
     if (ticket_content['assignee'] != null) {
         await addOptionSelectWithDifferentValueAndClass('dropDownAssignee', ticket_content['assignee'], formatUserDisplayName(await getUser(ticket_content['assignee'])), 'assignee')
@@ -429,6 +429,6 @@ init();
 
 
 /*
-Wenn es Anhänge gibt:
-- Button zum Hochladen der Anhänge unabhängig vom Absenden/Bearbeiten Button machen (Dann auch bei Plugin und createticket)
+If there are attachments:
+- Button for uploading attachments independent of send/edit button (plugin and create ticket)
 */

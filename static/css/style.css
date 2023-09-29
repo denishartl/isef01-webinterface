@@ -1,59 +1,101 @@
 /* 
 
-Abschnitte im Stylesheet
+Sections in the Stylesheet
 
-1. Grundeinstellungen
-2. Layoutbereiche
+1. Basic Settings
+2. Layout sections
 3. Navigation
-4. Inhalte
-5. Formulare
-6. Tabellen
+4. Content
+5. Forms
+6. Tables
 */
 
 
-/* 1. Grundeinstellungen */
+/* 1. Basic Settings */
 
-* {outline: 1px solid red;} 
+* {
+    outline: 1px solid red;
+}
 
-@font-face{font-family:'Lato';font-style:normal;font-weight:300;src:local('Lato Light'), local('Lato-Light'), url(https://kms-a.akamaihd.net/dc-1/5.109.67.232/public/build0/v2ui/asset/font/kU6VHbqMAZhaN_nXCmLQsQ.woff) format('woff'), url(https://kms-a.akamaihd.net/dc-1/5.109.67.232/public/build0/v2ui/asset/font/dPJ5r9gl3kK6ijoeP1IRsvY6323mHUZFJMgTvxaG2iE.woff2) format('woff2')}@font-face{font-family:'Lato';font-style:normal;font-weight:300;src:local('Lato Light'), local('Lato-Light'), url(https://kms-a.akamaihd.net/dc-1/5.109.67.232/public/build0/v2ui/asset/font/EsvMC5un3kjyUhB9ZEPPwg.woff2) format('woff2')}@font-face{font-family:'Lato';font-style:normal;font-weight:400;src:local('Lato Regular'), local('Lato-Regular'), url(https://kms-a.akamaihd.net/dc-1/5.109.67.232/public/build0/v2ui/asset/font/1bHRUMxmJHoup12DnI9XmQ.woff) format('woff'), url(https://kms-a.akamaihd.net/dc-1/5.109.67.232/public/build0/v2ui/asset/font/UyBMtLsHKBKXelqf4x7VRQ.woff2) format('woff2')}@font-face{font-family:'Lato';font-style:normal;font-weight:400;src:local('Lato Regular'), local('Lato-Regular'), url(https://kms-a.akamaihd.net/dc-1/5.109.67.232/public/build0/v2ui/asset/font/1YwB1sO8YE1Lyjf12WNiUA.woff2) format('woff2')}@font-face{font-family:'Lato';font-style:normal;font-weight:700;src:local('Lato Bold'), local('Lato-Bold'), url(https://kms-a.akamaihd.net/dc-1/5.109.67.232/public/build0/v2ui/asset/font/I1Pn3gihk5vyP0Yw5GqKsQ.woff) format('woff'), url(https://kms-a.akamaihd.net/dc-1/5.109.67.232/public/build0/v2ui/asset/font/ObQr5XYcoH0WBoUxiaYK3_Y6323mHUZFJMgTvxaG2iE.woff2) format('woff2')}@font-face{font-family:'Lato';font-style:normal;font-weight:700;src:local('Lato Bold'), local('Lato-Bold'), url(https://kms-a.akamaihd.net/dc-1/5.109.67.232/public/build0/v2ui/asset/font/H2DMvhDLycM56KNuAtbJYA.woff2) format('woff2')}
-
-body {  
+@font-face {
     font-family: 'Lato';
-    background-color: black;   
-    } 
+    font-style: normal;
+    font-weight: 300;
+    src: local('Lato Light'), local('Lato-Light'), url(https://kms-a.akamaihd.net/dc-1/5.109.67.232/public/build0/v2ui/asset/font/kU6VHbqMAZhaN_nXCmLQsQ.woff) format('woff'), url(https://kms-a.akamaihd.net/dc-1/5.109.67.232/public/build0/v2ui/asset/font/dPJ5r9gl3kK6ijoeP1IRsvY6323mHUZFJMgTvxaG2iE.woff2) format('woff2')
+}
 
-/* 2. Layoutbereiche */
+@font-face {
+    font-family: 'Lato';
+    font-style: normal;
+    font-weight: 300;
+    src: local('Lato Light'), local('Lato-Light'), url(https://kms-a.akamaihd.net/dc-1/5.109.67.232/public/build0/v2ui/asset/font/EsvMC5un3kjyUhB9ZEPPwg.woff2) format('woff2')
+}
+
+@font-face {
+    font-family: 'Lato';
+    font-style: normal;
+    font-weight: 400;
+    src: local('Lato Regular'), local('Lato-Regular'), url(https://kms-a.akamaihd.net/dc-1/5.109.67.232/public/build0/v2ui/asset/font/1bHRUMxmJHoup12DnI9XmQ.woff) format('woff'), url(https://kms-a.akamaihd.net/dc-1/5.109.67.232/public/build0/v2ui/asset/font/UyBMtLsHKBKXelqf4x7VRQ.woff2) format('woff2')
+}
+
+@font-face {
+    font-family: 'Lato';
+    font-style: normal;
+    font-weight: 400;
+    src: local('Lato Regular'), local('Lato-Regular'), url(https://kms-a.akamaihd.net/dc-1/5.109.67.232/public/build0/v2ui/asset/font/1YwB1sO8YE1Lyjf12WNiUA.woff2) format('woff2')
+}
+
+@font-face {
+    font-family: 'Lato';
+    font-style: normal;
+    font-weight: 700;
+    src: local('Lato Bold'), local('Lato-Bold'), url(https://kms-a.akamaihd.net/dc-1/5.109.67.232/public/build0/v2ui/asset/font/I1Pn3gihk5vyP0Yw5GqKsQ.woff) format('woff'), url(https://kms-a.akamaihd.net/dc-1/5.109.67.232/public/build0/v2ui/asset/font/ObQr5XYcoH0WBoUxiaYK3_Y6323mHUZFJMgTvxaG2iE.woff2) format('woff2')
+}
+
+@font-face {
+    font-family: 'Lato';
+    font-style: normal;
+    font-weight: 700;
+    src: local('Lato Bold'), local('Lato-Bold'), url(https://kms-a.akamaihd.net/dc-1/5.109.67.232/public/build0/v2ui/asset/font/H2DMvhDLycM56KNuAtbJYA.woff2) format('woff2')
+}
+
+body {
+    font-family: 'Lato';
+    background-color: black;
+}
+
+/* 2. Layout sections */
 
 header {
     height: 40px;
-    }
+}
 
 footer {
     height: 40px;
 }
 
-.container {   
+.container {
     font-family: 'Lato';
     margin-left: 80px;
     margin-right: 80px;
-    padding: 20px;   
-    background-color: #F1F2F6;  
+    padding: 20px;
+    background-color: #F1F2F6;
     border-radius: 8px;
-    } 
+}
 
-.containerlogin {   
+.containerlogin {
     font-family: 'Lato';
     margin: 80px;
-    padding: 20px; 
-    width: 550px;  
-    background-color: #FFFF;  
+    padding: 20px;
+    width: 550px;
+    background-color: #FFFF;
     border-radius: 8px;
-    } 
+}
 
 .containerklein {
     font-family: 'Lato';
-    padding: 20px;   
-    background-color: #FFF;  
+    padding: 20px;
+    background-color: #FFF;
     border-radius: 8px;
 }
 
@@ -64,129 +106,129 @@ div[type=Meldung] {
 
 /* 3. Navigation */
 
-a[type=button] {   
+a[type=button] {
     font-family: 'Lato';
     font-weight: bold;
     background-color: #7297EB;
-    border: none; 
-    border-radius: 6px;  
-    color: white;   
-    cursor: pointer; 
+    border: none;
+    border-radius: 6px;
+    color: white;
+    cursor: pointer;
     padding: 5px 120px;
     text-align: center;
     text-decoration: none;
     display: inline-block;
     margin: 4px 2px;
-    }   
-    
-a[type=buttonsend] {   
+}
+
+a[type=buttonsend] {
     font-family: 'Lato';
     font-weight: bold;
     background-color: #7297EB;
-    border: none; 
-    border-radius: 6px;  
-    color: white;   
-    cursor: pointer; 
+    border: none;
+    border-radius: 6px;
+    color: white;
+    cursor: pointer;
     text-align: center;
     text-decoration: none;
     display: inline-block;
     margin: 4px 2px;
-    width:100%;
+    width: 100%;
     padding-top: 5px;
     padding-bottom: 5px;
-    }
+}
 
-a[type=buttonedit] {   
+a[type=buttonedit] {
     font-family: 'Lato';
     font-weight: bold;
     background-color: #7297EB;
-    border: none; 
-    border-radius: 6px;  
-    color: white;   
-    cursor: pointer; 
+    border: none;
+    border-radius: 6px;
+    color: white;
+    cursor: pointer;
     text-align: center;
     text-decoration: none;
     display: inline-block;
     margin: 4px 2px;
-    width:100%;
+    width: 100%;
     padding-top: 5px;
     padding-bottom: 5px;
-    }
+}
 
-a[type=buttonclose] {   
+a[type=buttonclose] {
     font-family: 'Lato';
     font-weight: bold;
     background-color: #62646c;
-    border: none; 
-    border-radius: 6px;  
-    color: white;   
-    cursor: pointer; 
+    border: none;
+    border-radius: 6px;
+    color: white;
+    cursor: pointer;
     text-align: center;
     text-decoration: none;
     display: inline-block;
     margin: 4px 2px;
-    width:100%;
+    width: 100%;
     padding-top: 5px;
     padding-bottom: 5px;
-    }  
-    
-a[type=buttonclose]:hover {
-    background-color: #000; 
-    color:#FFF;
 }
 
-a[type=buttonfull] {   
-        font-family: 'Lato';
-        font-weight: bold;
-        background-color: #7297EB;
-        border: none; 
-        border-radius: 6px;  
-        color: white;   
-        cursor: pointer; 
-        padding: 5px 235px;
-        text-align: center;
-        text-decoration: none;
-        display: inline-block;
-        margin: 4px 2px;
-    }   
+a[type=buttonclose]:hover {
+    background-color: #000;
+    color: #FFF;
+}
 
-a[type=submit] {   
+a[type=buttonfull] {
     font-family: 'Lato';
     font-weight: bold;
     background-color: #7297EB;
-    border: none; 
-    border-radius: 6px;  
-    color: white;   
-    cursor: pointer; 
+    border: none;
+    border-radius: 6px;
+    color: white;
+    cursor: pointer;
+    padding: 5px 235px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    margin: 4px 2px;
+}
+
+a[type=submit] {
+    font-family: 'Lato';
+    font-weight: bold;
+    background-color: #7297EB;
+    border: none;
+    border-radius: 6px;
+    color: white;
+    cursor: pointer;
     padding: 5px 235px;
     text-align: center;
     display: inline-block;
     margin: 4px 2px;
     width: 80;
-    } 
-    
-a[type=submit]:hover {   
-    background-color: #C3D8FF; 
+}
+
+a[type=submit]:hover {
+    background-color: #C3D8FF;
     color: #4374E4;
-    } 
+}
 
 
 .error {
-    font-size: 1.3em;  
+    font-size: 1.3em;
     font-weight: bold;
     color: red;
 }
 
 .success {
-    font-size: 1.3em;  
+    font-size: 1.3em;
     font-weight: bold;
     color: green;
 }
 
-a:hover {   
-    background-color: #C3D8FF; 
+a:hover {
+    background-color: #C3D8FF;
     color: #4374E4;
-        } 
+}
 
 li[type=Navigation] {
     color: white;
@@ -197,7 +239,7 @@ li[type=Navigation] {
     resize: none;
 }
 
-/* 4. Inhalte */
+/* 4. Content */
 
 h1 {
     font-family: 'Lato';
@@ -210,54 +252,55 @@ h1 {
     border-radius: 8px;
 }
 
-h2 {   
-    font-weight: lighter;  
-    font-size: 1.3em;  
-} 
+h2 {
+    font-weight: lighter;
+    font-size: 1.3em;
+}
 
-img[type=Logo]{
+img[type=Logo] {
     height: 40px;
 }
 
 link {
     color: #7297EB;
 
- }
+}
 
-/* 5. Formulare */
+/* 5. Forms */
 
-form {   
-     border: #000000;   
- }
+form {
+    border: #000000;
+}
 
-input[type=text], input[type=password] {   
+input[type=text],
+input[type=password] {
     font-family: 'Lato';
     font-size: 16px;
-    width: 100%; 
-    border-radius: 5px; 
+    width: 100%;
+    border-radius: 5px;
     box-sizing: border-box;
-    color: #000;  
-    padding-left: 15px; 
-    padding-top: 5px; 
-    padding-bottom: 5px; 
-    border-style:solid;
-  
- }  
- 
- label[type=description]{
+    color: #000;
+    padding-left: 15px;
+    padding-top: 5px;
+    padding-bottom: 5px;
+    border-style: solid;
+
+}
+
+label[type=description] {
     padding-left: 5px;
     background-color: #FFF;
-    font-weight: 900;                      
- }
+    font-weight: 900;
+}
 
- label[type=content]{
+label[type=content] {
     padding-left: 5px;
-    background-color: #FFF;   
-    margin-bottom: 10px;  
-    padding-bottom: 10px;                 
- }
- 
- .form-box {
+    background-color: #FFF;
+    margin-bottom: 10px;
+    padding-bottom: 10px;
+}
+
+.form-box {
     padding: 10px;
     width: 100%;
 }
@@ -265,36 +308,39 @@ input[type=text], input[type=password] {
 select[type=ticket] {
     font-family: 'Lato';
     font-size: 16px;
-    border-radius: 5px;  
+    border-radius: 5px;
     width: 100%;
-    padding-top: 5px; 
-    padding-bottom: 5px; 
-    border-style:solid;
+    padding-top: 5px;
+    padding-bottom: 5px;
+    border-style: solid;
 }
 
 textarea {
     width: 100%;
-    border-radius: 5px; 
-    padding-top: 5px; 
+    border-radius: 5px;
+    padding-top: 5px;
     padding-bottom: 5px;
-    border-style:solid;  
+    border-style: solid;
 }
 
 input[type=search-box] {
-    font-family: 'Lato'; 
+    font-family: 'Lato';
     text-align: left;
     width: 10px;
 }
 
 .search-icon {
     position: absolute;
-    right: 10px; /* Abstand vom rechten Rand */
-    top: 50%; /* Vertikal zentrieren */
-    transform: translateY(-50%); /* Vertikal zentrieren */
+    right: 10px;
+    /* Distance from the right edge */
+    top: 50%;
+    /* Center vertically */
+    transform: translateY(-50%);
+    /* Center vertically */
 
 }
 
-/* 6. Tabellen */
+/* 6. Tables */
 
 Table[type=Meldungen] tr:hover {
     color: #4374E4;
@@ -316,17 +362,16 @@ th {
     padding-bottom: 3px;
 }
 
-table {   
+table {
     margin-top: 10px;
-    width: 100%; 
-    border: black;  
- } 
+    width: 100%;
+    border: black;
+}
 
-td[type=right] {   
-     text-align: right;   
- } 
+td[type=right] {
+    text-align: right;
+}
 
 .tableComments {
     display: block;
 }
-

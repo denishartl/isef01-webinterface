@@ -1,39 +1,45 @@
 {% load static %}
-<!DOCTYPE html>   
-<html id="top">   
-  <head>  
-    <meta name="viewport" content="width=device-width, initial-scale=1">  
-    <title> Melde dich im Ticketsystem an </title>  
-    <link href="{% static 'css/style.css' %}" rel="stylesheet" type='text/css'>
-  </head>  
+<!DOCTYPE html>
+<html id="top">
+
+<head>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title> Melde dich im Ticketsystem an </title>
+  <link href="{% static 'css/style.css' %}" rel="stylesheet" type='text/css'>
+</head>
 
 
-  <body>    
-    <div class="containerlogin">
-    <center> <img src="{% static 'images/IU.jpg' %}" width="120px"/> </center> 
-    <center> <h1> WILLKOMMEN </h1> </center> 
-    <center> <h2> Melde Dich bei der IU - Internationale Hochschule an um fortzufahren. </h2> </center>   
-      <form id="loginform" action="main" method="get">  
-        <div class="containerklein">   
-          <div type="Meldung">  
-            <label type="description">Benutzername </label>   
-            <input type="text" placeholder="Benutzername eingeben" name="username" id="username" required>  
-          </div>   
-          <div type="Meldung">
-            <label type="description">Passwort </label>   
-            <input type="password" placeholder="Passwort eingeben" name="password" id="password" required> 
-          </div> 
-            <table type="username"> 
-              <tr>  
-                <td><input type="checkbox"> Benutzername merken </td>
-                <td type="right"><a href="#"> Passwort vergessen? </a> </td> 
-              </tr>
-            </table>    
-        </div>   
-        <label class="error" hidden="true" id="error">Error goes here!</label>	
-      </form> 
-      <a type="submit" form="loginform" value="Submit" id="loginsubmit">Login</a> 
-    </div>
-    <script src="{% static 'js/login.js' %}"></script>   
-  </body>     
+<body>
+  <div class="containerlogin">
+    <center> <img src="{% static 'images/IU.jpg' %}" width="120px" /> </center>
+    <center>
+      <h1> WILLKOMMEN </h1>
+    </center>
+    <center>
+      <h2> Melde Dich bei der IU - Internationale Hochschule an um fortzufahren. </h2>
+    </center>
+    <form id="loginform" action="main" method="get">
+      <div class="containerklein">
+        <div type="Meldung">
+          <label type="description">Benutzername </label>
+          <input type="text" placeholder="Benutzername eingeben" name="username" id="username" required>
+        </div>
+        <div type="Meldung">
+          <label type="description">Passwort </label>
+          <input type="password" placeholder="Passwort eingeben" name="password" id="password" required>
+        </div>
+        <table type="username">
+          <tr>
+            <td><input type="checkbox"> Benutzername merken </td>
+            <td type="right"><a href="#"> Passwort vergessen? </a> </td>
+          </tr>
+        </table>
+      </div>
+      <label class="error" hidden="true" id="error">Error goes here!</label>
+    </form>
+    <a type="submit" form="loginform" value="Submit" id="loginsubmit">Login</a>
+  </div>
+  <script src="{% static 'js/login.js' %}"></script>
+</body>
+
 </html>

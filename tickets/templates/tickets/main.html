@@ -1,18 +1,24 @@
 {% load static %}
 <!DOCTYPE html>
 <html>
+
 <head>
     <title>Tickets Correction Management</title>
     <link href="{% static 'css/style.css' %}" rel="stylesheet" type='text/css'>
     <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/1.13.6/css/jquery.dataTables.min.css">
-    <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/searchpanes/2.2.0/css/searchPanes.dataTables.min.css">
+    <link rel="stylesheet" type="text/css"
+        href="https://cdn.datatables.net/searchpanes/2.2.0/css/searchPanes.dataTables.min.css">
     <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/select/1.7.0/css/select.dataTables.min.css">
     <script src="https://code.jquery.com/jquery-3.7.0.min.js"></script>
-    <script type="text/javascript" charset="utf8" src="https://cdn.datatables.net/1.13.5/js/jquery.dataTables.min.js"></script>
-    <script type="text/javascript" charset="utf8" src="https://cdn.datatables.net/searchpanes/2.2.0/js/dataTables.searchPanes.min.js"></script>
-    <script type="text/javascript" charset="utf8" src="https://cdn.datatables.net/select/1.7.0/js/dataTables.select.min.js"></script>    
+    <script type="text/javascript" charset="utf8"
+        src="https://cdn.datatables.net/1.13.5/js/jquery.dataTables.min.js"></script>
+    <script type="text/javascript" charset="utf8"
+        src="https://cdn.datatables.net/searchpanes/2.2.0/js/dataTables.searchPanes.min.js"></script>
+    <script type="text/javascript" charset="utf8"
+        src="https://cdn.datatables.net/select/1.7.0/js/dataTables.select.min.js"></script>
     <script src="{% static 'js/main.js' %}"></script>
 </head>
+
 <body>
     <header>
         <img type="Logo" src="{% static 'images/IU-logo.svg' %}">
@@ -22,7 +28,9 @@
         <div class="container">
             <h1>MELDUNGEN</h1>
             <div class="containerklein">
-                <a type="button" href="createticket" onclick="window.open(this.href, 'Neue Meldung', 'width=800,height=750'); return false">Neue Meldung</a>
+                <a type="button" href="createticket"
+                    onclick="window.open(this.href, 'Neue Meldung', 'width=800,height=750'); return false">Neue
+                    Meldung</a>
                 <a type="button" id="buttonlogout" href="/">Abmelden</a>
                 <table class="display" id="meldungenTable" data-tablesorter="true">
                     <thead>
@@ -36,9 +44,9 @@
                             <th data-filter="text">Stand</th>
                         </tr>
                     </thead>
-                    <tbody id="tableBody"> 
+                    <tbody id="tableBody">
                     </tbody>
-                    <tfoot> 
+                    <tfoot>
                         <tr>
                             <th>Nr.</th>
                             <th>Dokumententitel</th>
@@ -55,4 +63,5 @@
     </main>
     <footer></footer>
 </body>
+
 </html>
