@@ -313,7 +313,12 @@ document.getElementById('buttonsend').addEventListener('click', async function (
                         var success = 0;
                         const urlParams = new URLSearchParams(window.location.search);
                         const open_ticket_id = urlParams.get('ticket_id');
-                        console.log(document.getElementById('dropDownAssignee').value)
+                        if (document.getElementById('dropDownAssignee').value == "null") {
+                            assignee = null
+                        }
+                        else {
+                            assignee = document.getElementById('dropDownAssignee').value
+                        }
                         response_ticket = await updateTicket(
                             ticket_id = open_ticket_id,
                             author_id = localStorage.getItem('user_id'),
@@ -322,7 +327,7 @@ document.getElementById('buttonsend').addEventListener('click', async function (
                             ticket_type = document.getElementById('tickettype').value,
                             description = document.getElementById('description').value,
                             ticket_status = document.getElementById('dropDownTicketStatus').value,
-                            assignee = document.getElementById('dropDownAssignee').value
+                            assignee = assignee
                         );
                         if (response_ticket.status != 200) {
                             success = -1;
@@ -438,9 +443,3 @@ async function init() {
 }
 
 init();
-
-
-/*
-If there are attachments:
-- Button for uploading attachments independent of send/edit button (plugin and create ticket)
-*/
