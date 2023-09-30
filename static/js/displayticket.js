@@ -401,6 +401,7 @@ async function init() {
     var ticket_content = await getTicket(ticket_id);
     var course_content = await getCourse(ticket_content['course_id']);
     var document_content = await getDocument(ticket_content['document_id']);
+    document.getElementById('ticketid').value = ticket_content['id']
     addOptionSelect('dynamicDropdownCourse', course_content['shortname'])
     document.getElementById('dynamicDropdownCourse').value = course_content['shortname']
     document.getElementById('documenttype').value = document_content['doctype']
