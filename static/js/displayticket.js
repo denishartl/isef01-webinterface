@@ -170,7 +170,6 @@ async function getAllCourses() {
 async function updateTicket(ticket_id, author_id, course_id, document_id, ticket_type, description, ticket_status, assignee) {
     let url = 'https://iu-isef01-functionapp2.azurewebsites.net/api/UpdateTicket?ticket_id=' + ticket_id
     let body = {
-        'author_id': author_id,
         'course_id': course_id,
         'document_id': document_id,
         'ticket_type': ticket_type,
@@ -321,7 +320,6 @@ document.getElementById('buttonsend').addEventListener('click', async function (
                         }
                         response_ticket = await updateTicket(
                             ticket_id = open_ticket_id,
-                            author_id = localStorage.getItem('user_id'),
                             course_id = localStorage.getItem('course_id'),
                             document_id = localStorage.getItem('document_id'),
                             ticket_type = document.getElementById('tickettype').value,
