@@ -167,7 +167,7 @@ async function getAllCourses() {
         .then(responseJson => { return responseJson });
 }
 
-async function updateTicket(ticket_id, author_id, course_id, document_id, ticket_type, description, ticket_status, assignee) {
+async function updateTicket(ticket_id, course_id, document_id, ticket_type, description, ticket_status, assignee) {
     let url = 'https://iu-isef01-functionapp2.azurewebsites.net/api/UpdateTicket?ticket_id=' + ticket_id
     let body = {
         'course_id': course_id,
