@@ -124,6 +124,7 @@ document.getElementById('selectedDocument').addEventListener('change', async fun
 });
 
 document.getElementById('attachment').addEventListener('change', async function () {
+    document.getElementById("loadinggif").style.display = "block";
     document.getElementById('error').hidden = true;
     const reader = new FileReader();
     const selectedFile = document.getElementById("attachment").files[0];
@@ -137,10 +138,11 @@ document.getElementById('attachment').addEventListener('change', async function 
     else {
         printError('Uploads dürfen max. 4MB groß sein!')
     }
-
+    document.getElementById("loadinggif").style.display = "none";
 });
 
 document.getElementById('submit').addEventListener('click', async function () {
+    document.getElementById("loadinggif").style.display = "block";
     document.getElementById('error').hidden = true;
     document.getElementById('success').hidden = true;
     if (document.getElementById('dynamicDropdownCourse').value != " ") {
@@ -204,16 +206,19 @@ document.getElementById('submit').addEventListener('click', async function () {
     else {
         printError("Bitte Kurs auswählen!")
     }
+    document.getElementById("loadinggif").style.display = "none";
 });
 
 
 
 async function init() {
+    document.getElementById("loadinggif").style.display = "block";
     var all_courses = await getAllCourses();
     addOptionSelect('dynamicDropdownCourse', " ")
     for (var i = 0; i < all_courses.length; i++) {
         addOptionSelect('dynamicDropdownCourse', all_courses[i].shortname)
     };
+    document.getElementById("loadinggif").style.display = "none";
 }
 
 

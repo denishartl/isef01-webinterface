@@ -209,6 +209,7 @@ function printSuccess(message) {
 }
 
 document.getElementById('attachment').addEventListener('change', async function () {
+    document.getElementById("loadinggif").style.display = "block";
     document.getElementById('error').hidden = true;
     const reader = new FileReader();
     const selectedFile = document.getElementById("attachment").files[0];
@@ -222,10 +223,11 @@ document.getElementById('attachment').addEventListener('change', async function 
     else {
         printError('Uploads dürfen max. 4MB groß sein!')
     }
-
+    document.getElementById("loadinggif").style.display = "none";
 });
 
 document.getElementById('buttonedit').addEventListener('click', async function () {
+    document.getElementById("loadinggif").style.display = "block";
     current_user = await getUser(localStorage.getItem('user_id'));
     if ((current_user['role']).toUpperCase() == 'USER') {
         if ((document.getElementById('dropDownTicketStatus').value).toUpperCase() == 'NEU') {
@@ -263,13 +265,12 @@ document.getElementById('buttonedit').addEventListener('click', async function (
         document.getElementById('dropDownAssignee').disabled = false;
         document.getElementById('buttonedittd').hidden = true;
         document.getElementById('buttonsendtd').hidden = false;
-        console.log(document.getElementById('dropDownAssignee').value);
-        // If status "Neu" -> Option for "In Bearbeitung" or "Nicht umsetzbar"
-        // If status "In Bearbeitung" -> Option for "Änderung umgesetzt" or "Nicht Umsetzbar"
     }
+    document.getElementById("loadinggif").style.display = "none";
 });
 
 document.getElementById('documenttype').addEventListener('change', async function () {
+    document.getElementById("loadinggif").style.display = "block";
     document.getElementById('selectedDocument').innerHTML = '';
     var selected_course_name = document.getElementById('dynamicDropdownCourse').value;
     if (selected_course_name != " ") { // Still need to add actions when no course is selected
@@ -281,6 +282,7 @@ document.getElementById('documenttype').addEventListener('change', async functio
         };
         document.getElementById('selectedDocument').dispatchEvent(new Event("change"));
     }
+    document.getElementById("loadinggif").style.display = "none";
 });
 
 
@@ -300,6 +302,7 @@ document.getElementById('selectedDocument').addEventListener('change', async fun
 })
 
 document.getElementById('buttonsend').addEventListener('click', async function () {
+    document.getElementById("loadinggif").style.display = "block";
     document.getElementById('error').hidden = true;
     document.getElementById('success').hidden = true;
     if (document.getElementById('dynamicDropdownCourse').value != " ") {
@@ -372,10 +375,12 @@ document.getElementById('buttonsend').addEventListener('click', async function (
     else {
         printError("Bitte Kurs auswählen!")
     }
+    document.getElementById("loadinggif").style.display = "none";
 });
 
 
 document.getElementById('buttonsendcomment').addEventListener('click', async function () {
+    document.getElementById("loadinggif").style.display = "block";
     document.getElementById('error').hidden = true;
     document.getElementById('success').hidden = true;
     if (document.getElementById('textAreaComment').value != "") {
@@ -392,10 +397,12 @@ document.getElementById('buttonsendcomment').addEventListener('click', async fun
     else {
         printError('Bitte Kommentar eingeben!')
     }
+    document.getElementById("loadinggif").style.display = "none";
 });
 
 // Fill the form with the content from the ticket when the page is loading
 async function init() {
+    document.getElementById("loadinggif").style.display = "block";
     const urlParams = new URLSearchParams(window.location.search);
     const ticket_id = urlParams.get('ticket_id');
     var ticket_content = await getTicket(ticket_id);
@@ -424,6 +431,7 @@ async function init() {
     document.getElementById('dropDownTicketStatus').value = ticket_content['status']
     // Comments
     printComments(ticket_id)
+    document.getElementById("loadinggif").style.display = "none";
 }
 
 init();

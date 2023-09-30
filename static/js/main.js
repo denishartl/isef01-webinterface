@@ -66,6 +66,7 @@ async function getTicketsByUserID(user_id) {
 // Function for loading data and filling the table
 async function loadTableData() {
     try {
+        document.getElementById("loadinggif").style.display = "block";
         // Filling the table with data
         var data = await getTicketsByUserID(localStorage.getItem('user_id'));
         const promises = [];
@@ -137,6 +138,7 @@ async function loadTableData() {
                 });
             }
             );
+            document.getElementById("loadinggif").style.display = "none";
     } catch (error) {
         console.error('Fehler beim Abrufen der Daten: ', error);
     }
