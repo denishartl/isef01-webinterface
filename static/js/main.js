@@ -165,3 +165,12 @@ window.addEventListener("DOMContentLoaded", (event) => {
         }
     });
 });
+
+
+function init() {
+    if (localStorage.getItem('user_id') == null) {
+        window.location.href = "/";
+    }
+}
+
+init();

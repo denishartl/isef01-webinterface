@@ -402,6 +402,9 @@ document.getElementById('buttonsendcomment').addEventListener('click', async fun
 
 // Fill the form with the content from the ticket when the page is loading
 async function init() {
+    if (localStorage.getItem('user_id') == null) {
+        window.location.href = "/";
+    }
     document.getElementById("loadinggif").style.display = "block";
     const urlParams = new URLSearchParams(window.location.search);
     const ticket_id = urlParams.get('ticket_id');

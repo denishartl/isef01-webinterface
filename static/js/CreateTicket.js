@@ -212,6 +212,9 @@ document.getElementById('submit').addEventListener('click', async function () {
 
 
 async function init() {
+    if (localStorage.getItem('user_id') == null) {
+        window.location.href = "/";
+    }
     document.getElementById("loadinggif").style.display = "block";
     var all_courses = await getAllCourses();
     addOptionSelect('dynamicDropdownCourse', " ")
