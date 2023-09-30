@@ -40,3 +40,21 @@ document.getElementById('loginsubmit').addEventListener('click', async function 
 
 
 });
+
+document.getElementById('saveusername').addEventListener('change', async function () {
+    if (document.getElementById('saveusername').checked) {
+        localStorage.setItem('saveUsername', true)
+    }
+    else {
+        localStorage.setItem('saveUsername', false)
+    }
+})
+
+function init() {
+    if (localStorage.getItem('saveUsername') == "true") {
+        document.getElementById('saveusername').checked = true;
+        document.getElementById('username').value = localStorage.getItem('user_id');
+    }
+}
+
+init()

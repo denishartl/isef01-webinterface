@@ -12,10 +12,10 @@ Sections in the Stylesheet
 
 
 /* 1. Basic Settings */
-
+/*
 * {
     outline: 1px solid red;
-}
+}*/
 
 @font-face {
     font-family: 'Lato';

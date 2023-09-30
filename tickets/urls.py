@@ -6,4 +6,5 @@ urlpatterns = [
     path('main', views.main, name='main'),
     path('createticket', views.createticket, name='createticket'),
     path('displayticket', views.displayticket, name='displayticket'),
+    path('password', views.password, name='password'),
 ]

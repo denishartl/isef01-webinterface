@@ -158,6 +158,8 @@ $(document).ready(function () {
 
 window.addEventListener("DOMContentLoaded", (event) => {
     document.getElementById('buttonlogout').addEventListener('click', async function () {
-        localStorage.removeItem('user_id');
+        if (localStorage.getItem('saveUsername') != "true") {
+            localStorage.removeItem('user_id');
+        }
     });
 });

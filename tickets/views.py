@@ -19,3 +19,7 @@ def createticket(request):
 def displayticket(request):
     print('Request for displayticket page received')
     return render(request, 'tickets/displayticket.html')
+
+def password(request):
+    print('Request for password page received')
+    return render(request, 'tickets/password.html')
